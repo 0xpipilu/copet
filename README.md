@@ -1,38 +1,71 @@
 # Codex Pets Library
 
-This repository collects my Codex pets in a simple, publishable structure.
+A curated library of Codex pets collected in a simple repository structure.
 
-## Layout
+This repo is set up for two use cases:
 
-- `pets/<pet-folder>/pet.json`
-- `pets/<pet-folder>/spritesheet.webp`
-- `index.json` for the full pet list
+- asset storage: each pet lives in its own folder with just the runtime files
+- visual browsing: a static preview page reads generated catalog data and renders the collection
+
+## Repository Structure
+
+```text
+pets/
+  <pet-folder>/
+    pet.json
+    spritesheet.webp
+
+index.json
+catalog.js
+index.html
+scripts/build_index.py
+```
+
+## What Is Included
+
+- `pets/<pet-folder>/pet.json`: pet metadata and state mapping
+- `pets/<pet-folder>/spritesheet.webp`: spritesheet used by the pet runtime
+- `index.json`: generated catalog for the whole collection
+- `catalog.js`: browser-ready copy of the generated catalog
+- `index.html`: static gallery page for browsing the pets
+
+## Preview The Library
+
+If you enable GitHub Pages for this repository, `index.html` becomes a lightweight browser for the collection.
+
+Suggested Pages settings:
+
+1. Go to repository `Settings`
+2. Open `Pages`
+3. Set source to `Deploy from a branch`
+4. Choose branch `main` and folder `/ (root)`
+
+After that, your gallery page will be available at a URL like:
+
+```text
+https://0xpipilu.github.io/codex-pets/
+```
+
+## Update The Catalog
+
+When you add, remove, or rename pets, regenerate the catalog files:
+
+```bash
+python3 scripts/build_index.py
+```
+
+The script scans `pets/*/pet.json` and rebuilds both `index.json` and `catalog.js`.
+
+## Publish Changes
+
+```bash
+git add .
+git commit -m "update pet library"
+git push
+```
 
 ## Notes
 
-- Each pet folder is a standalone package.
-- The current library contains 84 pets.
-- Some folder names are kept from the original build output, so a folder name may differ from the `id` inside `pet.json`.
-
-## Publish To GitHub
-
-1. Create an empty GitHub repository.
-2. In this folder, initialize Git.
-3. Add `pets`, `README.md`, `.gitignore`, and `index.json`.
-4. Commit once.
-5. Add your GitHub remote and push.
-
-Example:
-
-```bash
-git init
-git add pets README.md .gitignore index.json
-git commit -m "Initial pet library"
-git branch -M main
-git remote add origin git@github.com:YOUR_NAME/codex-pets.git
-git push -u origin main
-```
-
-## Optional Next Step
-
-If you want, you can later add a `LICENSE` file and a small preview site for browsing the pets visually.
+- Folder names are preserved from the original build output, so some folder names differ from the `id` inside `pet.json`.
+- This repository currently tracks the minimal runtime package for each pet: `pet.json` plus `spritesheet.webp`.
+- I intentionally did not add a license yet, because that choice affects how others may reuse your work.
