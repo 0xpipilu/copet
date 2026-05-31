@@ -19,7 +19,7 @@ def build_readme():
     # Sort alphabetically by displayName
     pets = sorted(pets, key=lambda p: p["displayName"].lower())
 
-    cols = 6
+    cols = 5
     markdown_table = []
     markdown_table.append("| " + " | ".join([""] * cols) + " |")
     markdown_table.append("|" + "|".join([":---:"] * cols) + "|")
