@@ -1,0 +1,6 @@
+{
+  "id": "wheelbox",
+  "displayName": "Wheelbox",
+  "description": "A tiny Machinarium-style wheeled helper robot with a box body and a gentle single eye.",
+  "spritesheetPath": "spritesheet.webp"
+}

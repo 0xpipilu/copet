@@ -1,0 +1,115 @@
+{
+  "id": "heron",
+  "displayName": "Heron",
+  "description": "A slender mechanical heron Codex pet with an ultra-long straight beak, S-curved neck, layered steel wing plates, brass joints, rusted copper structure, and red-brown throat tassel strands.",
+  "spritesheetPath": "spritesheet.webp",
+  "states": {
+    "idle": {
+      "atlasRow": "idle",
+      "notes": "Quiet standing loop with tiny blink, faint breathing motion, and minimal tassel sway."
+    },
+    "walk": {
+      "atlasRows": [
+        "running-right",
+        "running-left"
+      ],
+      "notes": "Directional walk used for left-right motion and drag-facing behavior."
+    },
+    "probe": {
+      "atlasRow": "running",
+      "notes": "Slow ground-probing or forward-inspecting motion with beak direction aligned to body direction."
+    },
+    "curious": {
+      "atlasRow": "review",
+      "notes": "Alert head-and-neck inspection with a subtle forward lean."
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "notes": "Restrained uplift with a small opening of the layered wing plates."
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "notes": "Low-power one-leg sleep with closed eye and gathered neck."
+    },
+    "fly": {
+      "atlasRow": "jumping",
+      "notes": "Elegant right-facing flight cycle with unified body, wing, and trailing-leg direction."
+    },
+    "melancholy": {
+      "atlasRow": "failed",
+      "notes": "Extra low-power melancholy droop and recovery loop."
+    }
+  },
+  "atlasRowSemantics": {
+    "idle": "idle",
+    "running-right": "walk-right",
+    "running-left": "walk-left",
+    "waving": "happy",
+    "jumping": "fly",
+    "failed": "melancholy",
+    "waiting": "sleep",
+    "running": "probe",
+    "review": "curious"
+  },
+  "requestedActionMap": {
+    "idle": {
+      "atlasRow": "idle",
+      "status": "implemented"
+    },
+    "walk_right": {
+      "atlasRow": "running-right",
+      "status": "implemented"
+    },
+    "walk_left": {
+      "atlasRow": "running-left",
+      "status": "implemented"
+    },
+    "probe": {
+      "atlasRow": "running",
+      "status": "implemented"
+    },
+    "curious": {
+      "atlasRow": "review",
+      "status": "implemented"
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "status": "implemented"
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "status": "implemented"
+    },
+    "fly": {
+      "atlasRow": "jumping",
+      "status": "implemented"
+    },
+    "drag": {
+      "leftAtlasRow": "running-left",
+      "rightAtlasRow": "running-right",
+      "status": "implemented",
+      "notes": "Directional drag uses the same true-facing walk strips as locomotion."
+    },
+    "melancholy": {
+      "atlasRow": "failed",
+      "status": "implemented",
+      "notes": "Optional extra low-power reaction row."
+    }
+  },
+  "dragFacingValidation": {
+    "rule": "deltaX < 0 => facing left; deltaX > 0 => facing right",
+    "leftDragUses": "running-left",
+    "rightDragUses": "running-right",
+    "leftRowDerivedFrom": "generated-directly",
+    "rightRowDerivedFrom": "generated-directly",
+    "manualVerification": [
+      "left drag uses a true left-facing strip",
+      "right drag uses a true right-facing strip",
+      "walk-left and walk-right are not swapped",
+      "walk-left beak, neck, body, and gait all face left",
+      "walk-right beak, neck, body, and gait all face right",
+      "probe beak direction matches body direction",
+      "fly body, wings, beak, and trailing legs stay directionally unified"
+    ]
+  }
+}

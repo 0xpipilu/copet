@@ -1,0 +1,117 @@
+{
+  "id": "brew",
+  "displayName": "Brew",
+  "description": "A tiny vintage coffee-carrying robot companion with warm worn enamel metal, spring limbs, and gentle steam.",
+  "spritesheetPath": "spritesheet.webp",
+  "states": {
+    "idle": {
+      "atlasRow": "idle",
+      "notes": "Calm companion idle with tiny body sway, soft head nod, and gentle steam drift."
+    },
+    "walk": {
+      "atlasRows": [
+        "running-right",
+        "running-left"
+      ],
+      "notes": "Directional careful coffee-carrying walk rows."
+    },
+    "curious": {
+      "atlasRow": "review",
+      "notes": "Small attentive head tilt and pause, as if Brew noticed something."
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "notes": "Warm restrained cheer with a tiny lift and soft cup-toast gesture."
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "notes": "Drowsy coffee-break rest with gentle downward sink and softened steam."
+    },
+    "coffee_break": {
+      "atlasRow": "running",
+      "notes": "Compact sip-like support loop with cup raise, head dip, pause, and settle."
+    },
+    "bounce": {
+      "atlasRow": "jumping",
+      "notes": "Small buoyant happy bounce that keeps the cup stable."
+    },
+    "low_energy": {
+      "atlasRow": "failed",
+      "notes": "Gentle tired droop support loop, not a dramatic failure state."
+    }
+  },
+  "atlasRowSemantics": {
+    "idle": "idle",
+    "running-right": "walk-right",
+    "running-left": "walk-left",
+    "waving": "happy",
+    "jumping": "bounce-support",
+    "failed": "low-energy-support",
+    "waiting": "sleep",
+    "running": "coffee-break-support",
+    "review": "curious"
+  },
+  "requestedActionMap": {
+    "idle": {
+      "atlasRow": "idle",
+      "status": "implemented"
+    },
+    "walk_right": {
+      "atlasRow": "running-right",
+      "status": "implemented"
+    },
+    "walk_left": {
+      "atlasRow": "running-left",
+      "status": "implemented"
+    },
+    "curious": {
+      "atlasRow": "review",
+      "status": "implemented"
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "status": "implemented"
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "status": "implemented"
+    },
+    "drag": {
+      "leftAtlasRow": "running-left",
+      "rightAtlasRow": "running-right",
+      "status": "implemented",
+      "notes": "Directional drag reuses the true left-facing and right-facing careful walk rows."
+    },
+    "sip": {
+      "atlasRow": "running",
+      "status": "implemented-via-approximation",
+      "notes": "The fixed atlas had no extra dedicated sip row, so the running support row was authored as a compact coffee-break sip loop."
+    },
+    "bounce_support": {
+      "atlasRow": "jumping",
+      "status": "implemented",
+      "notes": "Extra support loop retained to fill the fixed atlas."
+    },
+    "low_energy_support": {
+      "atlasRow": "failed",
+      "status": "implemented",
+      "notes": "Extra support loop retained to fill the fixed atlas."
+    }
+  },
+  "dragFacingValidation": {
+    "rule": "deltaX < 0 => facing left; deltaX > 0 => facing right",
+    "leftDragUses": "running-left",
+    "rightDragUses": "running-right",
+    "leftRowDerivedFrom": "generated-directly",
+    "rightRowDerivedFrom": "generated-directly",
+    "manualVerification": [
+      "left drag uses the true left-facing walk row",
+      "right drag uses the true right-facing walk row",
+      "walk_left and walk_right are not swapped",
+      "head, eyes, body, coffee cup, and gait all agree with travel direction",
+      "left drag never faces right",
+      "right drag never faces left",
+      "Brew remains readable at small size as a vintage coffee-carrying robot with antennae and visible steam"
+    ]
+  }
+}

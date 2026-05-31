@@ -1,0 +1,102 @@
+{
+  "id": "pinky",
+  "displayName": "Pinky",
+  "description": "A faithful mechanical pink panther Codex pet with a long sleepy face, slender toy-metal body, pearl pink enamel, and a laid-back cool expression.",
+  "spritesheetPath": "spritesheet.webp",
+  "states": {
+    "idle": {
+      "atlasRow": "idle",
+      "notes": "Relaxed standing idle with tiny blink, slight head sway, and slow tail motion."
+    },
+    "walk": {
+      "atlasRows": [
+        "running-right",
+        "running-left"
+      ],
+      "notes": "Directional walk rows for normal movement and drag-facing behavior."
+    },
+    "curious": {
+      "atlasRow": "review",
+      "notes": "Subtle head tilt and side-looking observant loop."
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "notes": "Restrained pleased gesture with small paw lift and controlled expression."
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "notes": "Main dozing loop with closed eyes, lowered head, and relaxed tail."
+    },
+    "sit": {
+      "atlasRow": "jumping",
+      "notes": "Dedicated seated rest loop stored in the spare atlas row."
+    },
+    "probe": {
+      "atlasRow": "running",
+      "notes": "Relaxed in-place busy or surveying loop without directional travel."
+    },
+    "fluff": {
+      "atlasRow": "failed",
+      "notes": "Deeper sleepy slump used as a subdued extra rest state."
+    }
+  },
+  "atlasRowSemantics": {
+    "idle": "idle",
+    "running-right": "walk-right",
+    "running-left": "walk-left",
+    "waving": "happy",
+    "jumping": "sit",
+    "failed": "deep-doze",
+    "waiting": "sleep",
+    "running": "task-loop",
+    "review": "curious"
+  },
+  "requestedActionMap": {
+    "idle": {
+      "atlasRow": "idle",
+      "status": "implemented"
+    },
+    "walk_right": {
+      "atlasRow": "running-right",
+      "status": "implemented"
+    },
+    "walk_left": {
+      "atlasRow": "running-left",
+      "status": "implemented"
+    },
+    "curious": {
+      "atlasRow": "review",
+      "status": "implemented"
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "status": "implemented"
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "status": "implemented"
+    },
+    "sit": {
+      "atlasRow": "jumping",
+      "status": "implemented"
+    },
+    "drag": {
+      "leftAtlasRow": "running-left",
+      "rightAtlasRow": "running-right",
+      "status": "implemented",
+      "notes": "Directional drag uses the true-facing walk rows rather than mirrored guesses."
+    }
+  },
+  "dragFacingValidation": {
+    "rule": "deltaX < 0 => facing left; deltaX > 0 => facing right",
+    "leftDragUses": "running-left",
+    "rightDragUses": "running-right",
+    "manualVerification": [
+      "left drag uses a true left-facing strip",
+      "right drag uses a true right-facing strip",
+      "walk_left and walk_right are not swapped",
+      "head, body, paws, and tail stay directionally unified in both walk rows",
+      "left drag never faces right and right drag never faces left"
+    ]
+  }
+}

@@ -1,0 +1,761 @@
+{
+  "count": 84,
+  "pets": [
+    {
+      "slug": "battle-damaged-idle",
+      "folder": "pets/battle-damaged-idle",
+      "id": "battle-damaged-idle",
+      "displayName": "Battle-Damaged Idle",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/battle-damaged-idle/pet.json",
+      "spritesheetFile": "pets/battle-damaged-idle/spritesheet.webp"
+    },
+    {
+      "slug": "blackbird",
+      "folder": "pets/blackbird",
+      "id": "blackbird",
+      "displayName": "Blackbird",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/blackbird/pet.json",
+      "spritesheetFile": "pets/blackbird/spritesheet.webp"
+    },
+    {
+      "slug": "brass-reed",
+      "folder": "pets/brass-reed",
+      "id": "brass-reed",
+      "displayName": "Brass Reed",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/brass-reed/pet.json",
+      "spritesheetFile": "pets/brass-reed/spritesheet.webp"
+    },
+    {
+      "slug": "brassbun",
+      "folder": "pets/brassbun",
+      "id": "brassbun",
+      "displayName": "Brassbun",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/brassbun/pet.json",
+      "spritesheetFile": "pets/brassbun/spritesheet.webp"
+    },
+    {
+      "slug": "brassprout",
+      "folder": "pets/brassprout",
+      "id": "brassprout",
+      "displayName": "Brassprout",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/brassprout/pet.json",
+      "spritesheetFile": "pets/brassprout/spritesheet.webp"
+    },
+    {
+      "slug": "brew",
+      "folder": "pets/brew",
+      "id": "brew",
+      "displayName": "Brew",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/brew/pet.json",
+      "spritesheetFile": "pets/brew/spritesheet.webp"
+    },
+    {
+      "slug": "brigbeak",
+      "folder": "pets/brigbeak",
+      "id": "brigbeak",
+      "displayName": "Brigbeak",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/brigbeak/pet.json",
+      "spritesheetFile": "pets/brigbeak/spritesheet.webp"
+    },
+    {
+      "slug": "brine-star",
+      "folder": "pets/brine-star",
+      "id": "brine-star",
+      "displayName": "Brine Star",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/brine-star/pet.json",
+      "spritesheetFile": "pets/brine-star/spritesheet.webp"
+    },
+    {
+      "slug": "brinepaw",
+      "folder": "pets/brinepaw",
+      "id": "brinepaw",
+      "displayName": "Brinepaw",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/brinepaw/pet.json",
+      "spritesheetFile": "pets/brinepaw/spritesheet.webp"
+    },
+    {
+      "slug": "bruno",
+      "folder": "pets/bruno",
+      "id": "bruno",
+      "displayName": "Bruno",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/bruno/pet.json",
+      "spritesheetFile": "pets/bruno/spritesheet.webp"
+    },
+    {
+      "slug": "Budley-pet",
+      "folder": "pets/Budley-pet",
+      "id": "Budley",
+      "displayName": "Budley",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/Budley-pet/pet.json",
+      "spritesheetFile": "pets/Budley-pet/spritesheet.webp"
+    },
+    {
+      "slug": "butch-dog",
+      "folder": "pets/butch-dog",
+      "id": "butch-dog-machina",
+      "displayName": "Butch Dog",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/butch-dog/pet.json",
+      "spritesheetFile": "pets/butch-dog/spritesheet.webp"
+    },
+    {
+      "slug": "cardinal",
+      "folder": "pets/cardinal",
+      "id": "cardinal",
+      "displayName": "Cardinal",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/cardinal/pet.json",
+      "spritesheetFile": "pets/cardinal/spritesheet.webp"
+    },
+    {
+      "slug": "castle-guard",
+      "folder": "pets/castle-guard",
+      "id": "castle-guard",
+      "displayName": "Castle Guard",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/castle-guard/pet.json",
+      "spritesheetFile": "pets/castle-guard/spritesheet.webp"
+    },
+    {
+      "slug": "climber-stick",
+      "folder": "pets/climber-stick",
+      "id": "climber",
+      "displayName": "Climber",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/climber-stick/pet.json",
+      "spritesheetFile": "pets/climber-stick/spritesheet.webp"
+    },
+    {
+      "slug": "copper-cat-package",
+      "folder": "pets/copper-cat-package",
+      "id": "copper-cat",
+      "displayName": "Copper Cat",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/copper-cat-package/pet.json",
+      "spritesheetFile": "pets/copper-cat-package/spritesheet.webp"
+    },
+    {
+      "slug": "curlcap-pet",
+      "folder": "pets/curlcap-pet",
+      "id": "curlcap",
+      "displayName": "Curlcap",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/curlcap-pet/pet.json",
+      "spritesheetFile": "pets/curlcap-pet/spritesheet.webp"
+    },
+    {
+      "slug": "dandy-beak",
+      "folder": "pets/dandy-beak",
+      "id": "dandy-beak",
+      "displayName": "Dandy Beak",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/dandy-beak/pet.json",
+      "spritesheetFile": "pets/dandy-beak/spritesheet.webp"
+    },
+    {
+      "slug": "dart",
+      "folder": "pets/dart",
+      "id": "dart",
+      "displayName": "Dart",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/dart/pet.json",
+      "spritesheetFile": "pets/dart/spritesheet.webp"
+    },
+    {
+      "slug": "dog-creak",
+      "folder": "pets/dog-creak",
+      "id": "dog-creak",
+      "displayName": "Dog Creak",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/dog-creak/pet.json",
+      "spritesheetFile": "pets/dog-creak/spritesheet.webp"
+    },
+    {
+      "slug": "droopy7",
+      "folder": "pets/droopy7",
+      "id": "droopy-7-maintenance-dog",
+      "displayName": "Droopy-7",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/droopy7/pet.json",
+      "spritesheetFile": "pets/droopy7/spritesheet.webp"
+    },
+    {
+      "slug": "fairy-wren",
+      "folder": "pets/fairy-wren",
+      "id": "fairy-wren",
+      "displayName": "Fairy-Wren",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/fairy-wren/pet.json",
+      "spritesheetFile": "pets/fairy-wren/spritesheet.webp"
+    },
+    {
+      "slug": "fat-robot",
+      "folder": "pets/fat-robot",
+      "id": "fat-robot",
+      "displayName": "Fat Robot",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/fat-robot/pet.json",
+      "spritesheetFile": "pets/fat-robot/spritesheet.webp"
+    },
+    {
+      "slug": "flamingo",
+      "folder": "pets/flamingo",
+      "id": "flamingo",
+      "displayName": "flamingo",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/flamingo/pet.json",
+      "spritesheetFile": "pets/flamingo/spritesheet.webp"
+    },
+    {
+      "slug": "flying robot",
+      "folder": "pets/flying robot",
+      "id": "rotor-josef",
+      "displayName": "Rotor Josef",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/flying robot/pet.json",
+      "spritesheetFile": "pets/flying robot/spritesheet.webp"
+    },
+    {
+      "slug": "freddy-machi",
+      "folder": "pets/freddy-machi",
+      "id": "freddy-machi",
+      "displayName": "Freddy Machi",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/freddy-machi/pet.json",
+      "spritesheetFile": "pets/freddy-machi/spritesheet.webp"
+    },
+    {
+      "slug": "glint",
+      "folder": "pets/glint",
+      "id": "glint",
+      "displayName": "Glint",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/glint/pet.json",
+      "spritesheetFile": "pets/glint/spritesheet.webp"
+    },
+    {
+      "slug": "glowtail",
+      "folder": "pets/glowtail",
+      "id": "glowtail",
+      "displayName": "Glowtail",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/glowtail/pet.json",
+      "spritesheetFile": "pets/glowtail/spritesheet.webp"
+    },
+    {
+      "slug": "heron",
+      "folder": "pets/heron",
+      "id": "heron",
+      "displayName": "Heron",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/heron/pet.json",
+      "spritesheetFile": "pets/heron/spritesheet.webp"
+    },
+    {
+      "slug": "honeybee",
+      "folder": "pets/honeybee",
+      "id": "honeybee",
+      "displayName": "Honeybee",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/honeybee/pet.json",
+      "spritesheetFile": "pets/honeybee/spritesheet.webp"
+    },
+    {
+      "slug": "inkbit",
+      "folder": "pets/inkbit",
+      "id": "inkbit",
+      "displayName": "Inkbit",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/inkbit/pet.json",
+      "spritesheetFile": "pets/inkbit/spritesheet.webp"
+    },
+    {
+      "slug": "jem",
+      "folder": "pets/jem",
+      "id": "jem",
+      "displayName": "Jem",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/jem/pet.json",
+      "spritesheetFile": "pets/jem/spritesheet.webp"
+    },
+    {
+      "slug": "josef-bot",
+      "folder": "pets/josef-bot",
+      "id": "josef-bot",
+      "displayName": "Josef Bot",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/josef-bot/pet.json",
+      "spritesheetFile": "pets/josef-bot/spritesheet.webp"
+    },
+    {
+      "slug": "koi",
+      "folder": "pets/koi",
+      "id": "koi",
+      "displayName": "Koi",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/koi/pet.json",
+      "spritesheetFile": "pets/koi/spritesheet.webp"
+    },
+    {
+      "slug": "luna",
+      "folder": "pets/luna",
+      "id": "luna",
+      "displayName": "Luna",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/luna/pet.json",
+      "spritesheetFile": "pets/luna/spritesheet.webp"
+    },
+    {
+      "slug": "machi-cat",
+      "folder": "pets/machi-cat",
+      "id": "machi-cat",
+      "displayName": "Machi Cat",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/machi-cat/pet.json",
+      "spritesheetFile": "pets/machi-cat/spritesheet.webp"
+    },
+    {
+      "slug": "machi-chef",
+      "folder": "pets/machi-chef",
+      "id": "machi-chef",
+      "displayName": "Machi Chef",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/machi-chef/pet.json",
+      "spritesheetFile": "pets/machi-chef/spritesheet.webp"
+    },
+    {
+      "slug": "machi-dog",
+      "folder": "pets/machi-dog",
+      "id": "machi-dog",
+      "displayName": "Machi Dog",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/machi-dog/pet.json",
+      "spritesheetFile": "pets/machi-dog/spritesheet.webp"
+    },
+    {
+      "slug": "machi-foxy",
+      "folder": "pets/machi-foxy",
+      "id": "machi-foxy",
+      "displayName": "Machi Foxy",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/machi-foxy/pet.json",
+      "spritesheetFile": "pets/machi-foxy/spritesheet.webp"
+    },
+    {
+      "slug": "machi-owl",
+      "folder": "pets/machi-owl",
+      "id": "machi-owl",
+      "displayName": "Machi Owl",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/machi-owl/pet.json",
+      "spritesheetFile": "pets/machi-owl/spritesheet.webp"
+    },
+    {
+      "slug": "marten",
+      "folder": "pets/marten",
+      "id": "marten",
+      "displayName": "Marten",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/marten/pet.json",
+      "spritesheetFile": "pets/marten/spritesheet.webp"
+    },
+    {
+      "slug": "mean guard",
+      "folder": "pets/mean guard",
+      "id": "mean-guard",
+      "displayName": "Mean Guard",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/mean guard/pet.json",
+      "spritesheetFile": "pets/mean guard/spritesheet.webp"
+    },
+    {
+      "slug": "mechanical-maze-knight",
+      "folder": "pets/mechanical-maze-knight",
+      "id": "mechanical-maze-knight",
+      "displayName": "Mechanical Maze Knight",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/mechanical-maze-knight/pet.json",
+      "spritesheetFile": "pets/mechanical-maze-knight/spritesheet.webp"
+    },
+    {
+      "slug": "moss-maw",
+      "folder": "pets/moss-maw",
+      "id": "moss-maw",
+      "displayName": "Moss Maw",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/moss-maw/pet.json",
+      "spritesheetFile": "pets/moss-maw/spritesheet.webp"
+    },
+    {
+      "slug": "pebb",
+      "folder": "pets/pebb",
+      "id": "pebb",
+      "displayName": "Pebb",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/pebb/pet.json",
+      "spritesheetFile": "pets/pebb/spritesheet.webp"
+    },
+    {
+      "slug": "pinky",
+      "folder": "pets/pinky",
+      "id": "pinky",
+      "displayName": "Pinky",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/pinky/pet.json",
+      "spritesheetFile": "pets/pinky/spritesheet.webp"
+    },
+    {
+      "slug": "pip",
+      "folder": "pets/pip",
+      "id": "pip",
+      "displayName": "Pip",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/pip/pet.json",
+      "spritesheetFile": "pets/pip/spritesheet.webp"
+    },
+    {
+      "slug": "pipe-wrench-robot",
+      "folder": "pets/pipe-wrench-robot",
+      "id": "pipe-wrench-robot",
+      "displayName": "Pipe Wrench Robot",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/pipe-wrench-robot/pet.json",
+      "spritesheetFile": "pets/pipe-wrench-robot/spritesheet.webp"
+    },
+    {
+      "slug": "pub-player",
+      "folder": "pets/pub-player",
+      "id": "pub-player",
+      "displayName": "Pub Player",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/pub-player/pet.json",
+      "spritesheetFile": "pets/pub-player/spritesheet.webp"
+    },
+    {
+      "slug": "redcheek",
+      "folder": "pets/redcheek",
+      "id": "redcheek-01",
+      "displayName": "Redcheek",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/redcheek/pet.json",
+      "spritesheetFile": "pets/redcheek/spritesheet.webp"
+    },
+    {
+      "slug": "rivet-puff",
+      "folder": "pets/rivet-puff",
+      "id": "rivet-puff",
+      "displayName": "Rivet Puff",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/rivet-puff/pet.json",
+      "spritesheetFile": "pets/rivet-puff/spritesheet.webp"
+    },
+    {
+      "slug": "rook",
+      "folder": "pets/rook",
+      "id": "rook",
+      "displayName": "Rook",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/rook/pet.json",
+      "spritesheetFile": "pets/rook/spritesheet.webp"
+    },
+    {
+      "slug": "rosefinch",
+      "folder": "pets/rosefinch",
+      "id": "rosefinch",
+      "displayName": "Rosefinch",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/rosefinch/pet.json",
+      "spritesheetFile": "pets/rosefinch/spritesheet.webp"
+    },
+    {
+      "slug": "rustango",
+      "folder": "pets/rustango",
+      "id": "rustango",
+      "displayName": "Rustango",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/rustango/pet.json",
+      "spritesheetFile": "pets/rustango/spritesheet.webp"
+    },
+    {
+      "slug": "rustbeak",
+      "folder": "pets/rustbeak",
+      "id": "rustbeak",
+      "displayName": "RustBeak",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/rustbeak/pet.json",
+      "spritesheetFile": "pets/rustbeak/spritesheet.webp"
+    },
+    {
+      "slug": "rustveil",
+      "folder": "pets/rustveil",
+      "id": "rustveil",
+      "displayName": "Rustveil",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/rustveil/pet.json",
+      "spritesheetFile": "pets/rustveil/spritesheet.webp"
+    },
+    {
+      "slug": "samorost-boxbot",
+      "folder": "pets/samorost-boxbot",
+      "id": "samorost-boxbot",
+      "displayName": "Samorost Boxbot",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/samorost-boxbot/pet.json",
+      "spritesheetFile": "pets/samorost-boxbot/spritesheet.webp"
+    },
+    {
+      "slug": "scarlet-ibis",
+      "folder": "pets/scarlet-ibis",
+      "id": "scarlet-ibis",
+      "displayName": "Scarlet Ibis",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/scarlet-ibis/pet.json",
+      "spritesheetFile": "pets/scarlet-ibis/spritesheet.webp"
+    },
+    {
+      "slug": "scrib-codex-pet",
+      "folder": "pets/scrib-codex-pet",
+      "id": "scrib",
+      "displayName": "Scrib",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/scrib-codex-pet/pet.json",
+      "spritesheetFile": "pets/scrib-codex-pet/spritesheet.webp"
+    },
+    {
+      "slug": "skipp",
+      "folder": "pets/skipp",
+      "id": "skipp",
+      "displayName": "Skipp",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/skipp/pet.json",
+      "spritesheetFile": "pets/skipp/spritesheet.webp"
+    },
+    {
+      "slug": "smoking-robot",
+      "folder": "pets/smoking-robot",
+      "id": "smoking-robot",
+      "displayName": "Smoking Robot",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/smoking-robot/pet.json",
+      "spritesheetFile": "pets/smoking-robot/spritesheet.webp"
+    },
+    {
+      "slug": "snoo",
+      "folder": "pets/snoo",
+      "id": "snoo",
+      "displayName": "Snoo",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/snoo/pet.json",
+      "spritesheetFile": "pets/snoo/spritesheet.webp"
+    },
+    {
+      "slug": "spike",
+      "folder": "pets/spike",
+      "id": "spike",
+      "displayName": "Spike",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/spike/pet.json",
+      "spritesheetFile": "pets/spike/spritesheet.webp"
+    },
+    {
+      "slug": "split-chip",
+      "folder": "pets/split-chip",
+      "id": "split-chip",
+      "displayName": "Split Chip",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/split-chip/pet.json",
+      "spritesheetFile": "pets/split-chip/spritesheet.webp"
+    },
+    {
+      "slug": "spot",
+      "folder": "pets/spot",
+      "id": "spot",
+      "displayName": "Spot",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/spot/pet.json",
+      "spritesheetFile": "pets/spot/spritesheet.webp"
+    },
+    {
+      "slug": "springtrap-machi",
+      "folder": "pets/springtrap-machi",
+      "id": "springtrap-machi",
+      "displayName": "Springtrap Machi",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/springtrap-machi/pet.json",
+      "spritesheetFile": "pets/springtrap-machi/spritesheet.webp"
+    },
+    {
+      "slug": "stilt",
+      "folder": "pets/stilt",
+      "id": "stilt",
+      "displayName": "Stilt",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/stilt/pet.json",
+      "spritesheetFile": "pets/stilt/spritesheet.webp"
+    },
+    {
+      "slug": "sunny",
+      "folder": "pets/sunny",
+      "id": "sunny",
+      "displayName": "Sunny",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/sunny/pet.json",
+      "spritesheetFile": "pets/sunny/spritesheet.webp"
+    },
+    {
+      "slug": "tavern-lampbot",
+      "folder": "pets/tavern-lampbot",
+      "id": "tavern-lampbot",
+      "displayName": "Tavern Lampbot",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/tavern-lampbot/pet.json",
+      "spritesheetFile": "pets/tavern-lampbot/spritesheet.webp"
+    },
+    {
+      "slug": "the-drummer",
+      "folder": "pets/the-drummer",
+      "id": "the-drummer",
+      "displayName": "The Drummer",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/the-drummer/pet.json",
+      "spritesheetFile": "pets/the-drummer/spritesheet.webp"
+    },
+    {
+      "slug": "tin-grin",
+      "folder": "pets/tin-grin",
+      "id": "tin-grin",
+      "displayName": "Tin Grin",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/tin-grin/pet.json",
+      "spritesheetFile": "pets/tin-grin/spritesheet.webp"
+    },
+    {
+      "slug": "tin-terrier",
+      "folder": "pets/tin-terrier",
+      "id": "tin-terrier",
+      "displayName": "Tin Terrier",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/tin-terrier/pet.json",
+      "spritesheetFile": "pets/tin-terrier/spritesheet.webp"
+    },
+    {
+      "slug": "tinward-pet",
+      "folder": "pets/tinward-pet",
+      "id": "tinward",
+      "displayName": "Tinward",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/tinward-pet/pet.json",
+      "spritesheetFile": "pets/tinward-pet/spritesheet.webp"
+    },
+    {
+      "slug": "tomo",
+      "folder": "pets/tomo",
+      "id": "tomo",
+      "displayName": "Tomo",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/tomo/pet.json",
+      "spritesheetFile": "pets/tomo/spritesheet.webp"
+    },
+    {
+      "slug": "tsuru",
+      "folder": "pets/tsuru",
+      "id": "red-crown-crane",
+      "displayName": "tsuru",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/tsuru/pet.json",
+      "spritesheetFile": "pets/tsuru/spritesheet.webp"
+    },
+    {
+      "slug": "turaco",
+      "folder": "pets/turaco",
+      "id": "turaco",
+      "displayName": "Turaco",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/turaco/pet.json",
+      "spritesheetFile": "pets/turaco/spritesheet.webp"
+    },
+    {
+      "slug": "velmour",
+      "folder": "pets/velmour",
+      "id": "velmour",
+      "displayName": "velmour",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/velmour/pet.json",
+      "spritesheetFile": "pets/velmour/spritesheet.webp"
+    },
+    {
+      "slug": "vendo",
+      "folder": "pets/vendo",
+      "id": "vendo",
+      "displayName": "Vendo",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/vendo/pet.json",
+      "spritesheetFile": "pets/vendo/spritesheet.webp"
+    },
+    {
+      "slug": "vermora",
+      "folder": "pets/vermora",
+      "id": "vermora",
+      "displayName": "Vermora",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/vermora/pet.json",
+      "spritesheetFile": "pets/vermora/spritesheet.webp"
+    },
+    {
+      "slug": "walle",
+      "folder": "pets/walle",
+      "id": "scrapling",
+      "displayName": "Scrapling",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/walle/pet.json",
+      "spritesheetFile": "pets/walle/spritesheet.webp"
+    },
+    {
+      "slug": "wheelbox",
+      "folder": "pets/wheelbox",
+      "id": "wheelbox",
+      "displayName": "Wheelbox",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/wheelbox/pet.json",
+      "spritesheetFile": "pets/wheelbox/spritesheet.webp"
+    },
+    {
+      "slug": "whisk",
+      "folder": "pets/whisk",
+      "id": "whisk",
+      "displayName": "Whisk",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/whisk/pet.json",
+      "spritesheetFile": "pets/whisk/spritesheet.webp"
+    },
+    {
+      "slug": "white-eye",
+      "folder": "pets/white-eye",
+      "id": "white-eye",
+      "displayName": "White-Eye",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/white-eye/pet.json",
+      "spritesheetFile": "pets/white-eye/spritesheet.webp"
+    },
+    {
+      "slug": "wreckling",
+      "folder": "pets/wreckling",
+      "id": "wreckling",
+      "displayName": "Wreckling",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/wreckling/pet.json",
+      "spritesheetFile": "pets/wreckling/spritesheet.webp"
+    }
+  ]
+}

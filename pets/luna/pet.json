@@ -1,0 +1,72 @@
+{
+  "id": "luna",
+  "displayName": "Luna",
+  "description": "A pink-and-cream fairy-tale mechanical moon rocket companion with a tethered moon lamp.",
+  "spritesheetPath": "spritesheet.webp",
+  "atlas": {
+    "columns": 8,
+    "rows": 9,
+    "cellWidth": 192,
+    "cellHeight": 208
+  },
+  "atlasRowSemantics": {
+    "0": "idle",
+    "1": "fly_right",
+    "2": "fly_left",
+    "3": "friendly_greeting_wiggle",
+    "4": "happy",
+    "5": "low_power_discouraged",
+    "6": "sleep",
+    "7": "active_scouting_hover",
+    "8": "curious"
+  },
+  "requestedActionMap": {
+    "idle": {
+      "rowState": "idle",
+      "row": 0,
+      "match": "exact"
+    },
+    "fly_right": {
+      "rowState": "running-right",
+      "row": 1,
+      "match": "mapped-standard-row"
+    },
+    "fly_left": {
+      "rowState": "running-left",
+      "row": 2,
+      "match": "mapped-standard-row"
+    },
+    "curious": {
+      "rowState": "review",
+      "row": 8,
+      "match": "mapped-standard-row"
+    },
+    "happy": {
+      "rowState": "jumping",
+      "row": 4,
+      "match": "mapped-standard-row"
+    },
+    "sleep": {
+      "rowState": "waiting",
+      "row": 6,
+      "match": "mapped-standard-row"
+    },
+    "drag": {
+      "leftRowState": "running-left",
+      "leftRow": 2,
+      "rightRowState": "running-right",
+      "rightRow": 1,
+      "match": "directional-row-mapping"
+    }
+  },
+  "dragFacingValidation": {
+    "validated": true,
+    "ruleLeft": "deltaX < 0 => facing left",
+    "ruleRight": "deltaX > 0 => facing right",
+    "leftFacingRowState": "running-left",
+    "leftFacingRow": 2,
+    "rightFacingRowState": "running-right",
+    "rightFacingRow": 1,
+    "manualReview": "Confirmed from contact-sheet QA that row 2 is left-facing and row 1 is right-facing."
+  }
+}

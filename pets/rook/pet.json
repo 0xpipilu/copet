@@ -1,0 +1,109 @@
+{
+  "id": "rook",
+  "displayName": "Rook",
+  "description": "A faithful Codex pet adaptation of a noir mechanical mouse detective with giant round ears, a worn brown leather hat, a weathered blue-gray trench coat, warm glowing mechanical eyes, no tail, and a small vintage pistol.",
+  "spritesheetPath": "spritesheet.webp",
+  "states": {
+    "idle": {
+      "atlasRow": "idle",
+      "notes": "Alert baseline idle with tiny breathing, steady pistol control, and soft eye-light pulsing."
+    },
+    "walk": {
+      "atlasRows": [
+        "running-right",
+        "running-left"
+      ],
+      "notes": "Short careful patrol walk rows used for movement and true drag-facing behavior."
+    },
+    "curious": {
+      "atlasRow": "review",
+      "notes": "Suspicious little detective inspect loop with a head tilt and cautious attention."
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "notes": "Restrained pleased gesture with a proud little flourish, still keeping the pistol readable."
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "notes": "Standing doze with lowered hat, softened posture, and relaxed pistol."
+    },
+    "investigate": {
+      "atlasRow": "running",
+      "notes": "Independent in-place investigate loop with scanning, listening, and careful micro-motions."
+    },
+    "brace": {
+      "atlasRow": "jumping",
+      "notes": "Compact alert brace-and-rise motion stored in the spare jump row."
+    },
+    "grumpy": {
+      "atlasRow": "failed",
+      "notes": "Stubborn irritated slump and recovery kept effect-free and companion-safe."
+    }
+  },
+  "atlasRowSemantics": {
+    "idle": "idle",
+    "running-right": "walk-right",
+    "running-left": "walk-left",
+    "waving": "happy",
+    "jumping": "brace",
+    "failed": "grumpy",
+    "waiting": "sleep",
+    "running": "investigate",
+    "review": "curious"
+  },
+  "requestedActionMap": {
+    "idle": {
+      "atlasRow": "idle",
+      "status": "implemented"
+    },
+    "walk_right": {
+      "atlasRow": "running-right",
+      "status": "implemented"
+    },
+    "walk_left": {
+      "atlasRow": "running-left",
+      "status": "implemented"
+    },
+    "curious": {
+      "atlasRow": "review",
+      "status": "implemented"
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "status": "implemented"
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "status": "implemented"
+    },
+    "drag": {
+      "leftAtlasRow": "running-left",
+      "rightAtlasRow": "running-right",
+      "status": "implemented",
+      "notes": "Directional drag uses the true left-facing and right-facing patrol walk rows."
+    },
+    "investigate": {
+      "atlasRow": "running",
+      "status": "implemented",
+      "notes": "The fixed atlas spare running row was intentionally remapped to a dedicated investigate loop."
+    }
+  },
+  "dragFacingValidation": {
+    "rule": "deltaX < 0 => facing left; deltaX > 0 => facing right",
+    "leftDragUses": "running-left",
+    "rightDragUses": "running-right",
+    "leftRowDerivedFrom": "generated-directly",
+    "rightRowDerivedFrom": "generated-directly",
+    "manualVerification": [
+      "left drag uses a true left-facing strip",
+      "right drag uses a true right-facing strip",
+      "walk_left and walk_right are not swapped",
+      "head, body, coat front, pistol, and gait all face left in running-left",
+      "head, body, coat front, pistol, and gait all face right in running-right",
+      "left drag never faces right",
+      "right drag never faces left",
+      "giant ears, leather hat, trench coat, glowing eyes, pistol, and tailless silhouette stay readable at small size",
+      "no tail appears in any directional row or drag-facing state"
+    ]
+  }
+}

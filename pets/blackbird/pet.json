@@ -1,0 +1,6 @@
+{
+  "id": "blackbird",
+  "displayName": "Blackbird",
+  "description": "A tiny Machinarium-style mechanical blackbird with brass beak and eye ring, quiet alert posture, and layered iron feather plates.",
+  "spritesheetPath": "spritesheet.webp"
+}

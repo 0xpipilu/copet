@@ -1,0 +1,6 @@
+{
+  "id": "machi-chef",
+  "displayName": "Machi Chef",
+  "description": "A tiny anxious robot chef inspired by a rusted storybook kitchen automaton, simplified into a Codex desktop pet.",
+  "spritesheetPath": "spritesheet.webp"
+}

@@ -1,0 +1,115 @@
+{
+  "id": "koi",
+  "displayName": "Koi",
+  "description": "A calm mechanical koi companion pet with ivory and rust-orange layered scales, brass joints, glassy round eyes, translucent fin membranes, and an elegant flowing tail.",
+  "spritesheetPath": "spritesheet.webp",
+  "states": {
+    "idle": {
+      "atlasRow": "idle",
+      "notes": "Calm suspended hover with tiny tail sway, soft pectoral fin fanning, and minimal buoyancy drift."
+    },
+    "walk": {
+      "atlasRows": [
+        "running-right",
+        "running-left"
+      ],
+      "notes": "Directional swim rows used for left-right travel and drag-facing behavior."
+    },
+    "curious": {
+      "atlasRow": "review",
+      "notes": "Gentle forward probe with subtle head turn and observant glass-eye focus."
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "notes": "Restrained uplift with slightly broader fin spread and lighter tail sweep."
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "notes": "Low-activity suspended rest with half-closed eye and reduced fin motion."
+    },
+    "float": {
+      "atlasRow": "running",
+      "notes": "Slow buoyant hover loop for calm mid-water suspension."
+    },
+    "rise": {
+      "atlasRow": "jumping",
+      "notes": "Gentle upward swim and settle with graceful fin opening."
+    },
+    "melancholy": {
+      "atlasRow": "failed",
+      "notes": "Subdued low-power droop and recovery loop."
+    }
+  },
+  "atlasRowSemantics": {
+    "idle": "idle",
+    "running-right": "swim-right",
+    "running-left": "swim-left",
+    "waving": "happy",
+    "jumping": "rise",
+    "failed": "melancholy",
+    "waiting": "sleep",
+    "running": "float",
+    "review": "curious"
+  },
+  "requestedActionMap": {
+    "idle": {
+      "atlasRow": "idle",
+      "status": "implemented"
+    },
+    "swim_right": {
+      "atlasRow": "running-right",
+      "status": "implemented"
+    },
+    "swim_left": {
+      "atlasRow": "running-left",
+      "status": "implemented"
+    },
+    "curious": {
+      "atlasRow": "review",
+      "status": "implemented"
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "status": "implemented"
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "status": "implemented"
+    },
+    "float": {
+      "atlasRow": "running",
+      "status": "implemented",
+      "notes": "Extra support loop kept because it was requested as a high-risk motion to validate early."
+    },
+    "drag": {
+      "leftAtlasRow": "running-left",
+      "rightAtlasRow": "running-right",
+      "status": "implemented",
+      "notes": "Directional drag uses the same true-facing swim strips as locomotion."
+    },
+    "rise": {
+      "atlasRow": "jumping",
+      "status": "implemented"
+    },
+    "melancholy": {
+      "atlasRow": "failed",
+      "status": "implemented"
+    }
+  },
+  "dragFacingValidation": {
+    "rule": "deltaX < 0 => facing left; deltaX > 0 => facing right",
+    "leftDragUses": "running-left",
+    "rightDragUses": "running-right",
+    "leftRowDerivedFrom": "generated-directly",
+    "rightRowDerivedFrom": "generated-directly",
+    "manualVerification": [
+      "left drag uses a true left-facing strip",
+      "right drag uses a true right-facing strip",
+      "swim_left and swim_right are not swapped",
+      "swim_left head, mouth, body, fins, and tail all face left",
+      "swim_right head, mouth, body, fins, and tail all face right",
+      "tail sweep direction stays coordinated with forward propulsion",
+      "float and sleep preserve the same fish identity without direction confusion"
+    ]
+  }
+}

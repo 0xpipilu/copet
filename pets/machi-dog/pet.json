@@ -1,0 +1,6 @@
+{
+  "id": "machi-dog",
+  "displayName": "Machi Dog",
+  "description": "A tiny rust-bellied mechanical dog inspired by a scrapyard automaton, with clamp jaws and spindly legs.",
+  "spritesheetPath": "spritesheet.webp"
+}

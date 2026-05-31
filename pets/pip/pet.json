@@ -1,0 +1,110 @@
+{
+  "id": "pip",
+  "displayName": "Pip",
+  "description": "A faithful tiny antique brass robot Codex pet based on the provided reference, with a rounded oversized head, warm glowing oval eyes, single ball-tip antenna, tiny ball-jointed limbs, and a gentle lonely storybook mood.",
+  "spritesheetPath": "spritesheet.webp",
+  "states": {
+    "idle": {
+      "atlasRow": "idle",
+      "notes": "Calm standing idle with tiny breathing, soft eye-light pulse, and slight head tip."
+    },
+    "walk": {
+      "atlasRows": [
+        "running-right",
+        "running-left"
+      ],
+      "notes": "Directional gentle walk rows used for movement and drag-facing behavior."
+    },
+    "curious": {
+      "atlasRow": "review",
+      "notes": "Quiet wonder with a small lean, tiny hand lift, and slightly brighter eyes."
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "notes": "Restrained happy gesture with a small hand lift and gentle body bounce."
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "notes": "Main dozing loop with lowered head, dimmed eyes, and peaceful breathing."
+    },
+    "hold_star": {
+      "atlasRow": "jumping",
+      "notes": "Tender held-star cuddle loop using the spare atlas row."
+    },
+    "probe": {
+      "atlasRow": "running",
+      "notes": "Quiet non-directional task loop with tiny in-place processing motion."
+    },
+    "deep_rest": {
+      "atlasRow": "failed",
+      "notes": "Spare deeper-rest loop with tucked posture and relaxed limbs."
+    }
+  },
+  "atlasRowSemantics": {
+    "idle": "idle",
+    "running-right": "walk-right",
+    "running-left": "walk-left",
+    "waving": "happy",
+    "jumping": "hold-star",
+    "failed": "deep-rest",
+    "waiting": "sleep",
+    "running": "task-loop",
+    "review": "curious"
+  },
+  "requestedActionMap": {
+    "idle": {
+      "atlasRow": "idle",
+      "status": "implemented"
+    },
+    "walk_right": {
+      "atlasRow": "running-right",
+      "status": "implemented"
+    },
+    "walk_left": {
+      "atlasRow": "running-left",
+      "status": "implemented"
+    },
+    "curious": {
+      "atlasRow": "review",
+      "status": "implemented"
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "status": "implemented"
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "status": "implemented"
+    },
+    "drag": {
+      "leftAtlasRow": "running-left",
+      "rightAtlasRow": "running-right",
+      "status": "implemented",
+      "notes": "Directional drag uses the true left-facing and right-facing walk rows."
+    },
+    "hold_star": {
+      "atlasRow": "jumping",
+      "status": "implemented"
+    },
+    "task_loop": {
+      "atlasRow": "running",
+      "status": "implemented"
+    },
+    "deep_rest": {
+      "atlasRow": "failed",
+      "status": "implemented"
+    }
+  },
+  "dragFacingValidation": {
+    "rule": "deltaX < 0 => facing left; deltaX > 0 => facing right",
+    "leftDragUses": "running-left",
+    "rightDragUses": "running-right",
+    "manualVerification": [
+      "left drag uses the true left-facing strip",
+      "right drag uses the true right-facing strip",
+      "walk_left and walk_right are not swapped",
+      "head, eyes, torso, hands, legs, and feet stay directionally unified in both walk rows",
+      "left drag never faces right and right drag never faces left"
+    ]
+  }
+}

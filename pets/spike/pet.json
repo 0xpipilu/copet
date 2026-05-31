@@ -1,0 +1,116 @@
+{
+  "id": "spike",
+  "displayName": "Spike",
+  "description": "A quiet mechanical cactus companion in a pink flower pot, with warm lamp eyes and a tiny blossom.",
+  "spritesheetPath": "spritesheet.webp",
+  "states": {
+    "idle": {
+      "atlasRow": "idle",
+      "notes": "Gentle companion idle with small sway, soft lamp pulse, and a calm return-to-center rhythm."
+    },
+    "walk": {
+      "atlasRows": [
+        "running-right",
+        "running-left"
+      ],
+      "notes": "Directional whole-pot glide rows used as scene-movement approximation, not literal foot walking."
+    },
+    "curious": {
+      "atlasRow": "review",
+      "notes": "Attentive lean-and-pause loop with brighter focused eye lamps."
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "notes": "Restrained pleased bounce with a gentle arm raise and brighter lamp glow."
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "notes": "Cozy resting loop with sinking posture, dimmer lamps, and slow breathing."
+    },
+    "active": {
+      "atlasRow": "running",
+      "notes": "Soft active support loop for alert companion behavior."
+    },
+    "hop": {
+      "atlasRow": "jumping",
+      "notes": "Tiny buoyant unified pot-and-cactus hop."
+    },
+    "melancholy": {
+      "atlasRow": "failed",
+      "notes": "Low-energy droop with gentle recovery, kept kind and companion-like."
+    }
+  },
+  "atlasRowSemantics": {
+    "idle": "idle",
+    "running-right": "walk_right_glide",
+    "running-left": "walk_left_glide",
+    "waving": "happy",
+    "jumping": "hop",
+    "failed": "melancholy",
+    "waiting": "sleep",
+    "running": "active",
+    "review": "curious"
+  },
+  "requestedActionMap": {
+    "idle": {
+      "atlasRow": "idle",
+      "status": "implemented"
+    },
+    "walk_right": {
+      "atlasRow": "running-right",
+      "status": "implemented",
+      "notes": "Whole-pot rightward glide approximation, not literal walking."
+    },
+    "walk_left": {
+      "atlasRow": "running-left",
+      "status": "implemented",
+      "notes": "Whole-pot leftward glide approximation, not literal walking."
+    },
+    "curious": {
+      "atlasRow": "review",
+      "status": "implemented"
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "status": "implemented"
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "status": "implemented"
+    },
+    "drag": {
+      "leftAtlasRow": "running-left",
+      "rightAtlasRow": "running-right",
+      "status": "implemented",
+      "notes": "Directional drag reuses the true-facing whole-pot glide rows."
+    },
+    "active_support": {
+      "atlasRow": "running",
+      "status": "implemented"
+    },
+    "hop_support": {
+      "atlasRow": "jumping",
+      "status": "implemented"
+    },
+    "melancholy_support": {
+      "atlasRow": "failed",
+      "status": "implemented"
+    }
+  },
+  "dragFacingValidation": {
+    "rule": "deltaX < 0 => facing left; deltaX > 0 => facing right",
+    "leftDragUses": "running-left",
+    "rightDragUses": "running-right",
+    "leftRowDerivedFrom": "generated-directly",
+    "rightRowDerivedFrom": "generated-directly",
+    "manualVerification": [
+      "left drag uses the true left-facing row",
+      "right drag uses the true right-facing row",
+      "walk_left and walk_right are not swapped",
+      "pot body, cactus face direction, side knob placement, arms, flower, and lamp hatch remain directionally coherent",
+      "left drag never faces right",
+      "right drag never faces left",
+      "Spike remains readable at small size as a flower-pot mechanical cactus companion"
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "id": "fat-robot",
+  "displayName": "Fat Robot",
+  "description": "A chubby rusty bucket robot companion inspired by the stout Machinarium fat robot.",
+  "spritesheetPath": "spritesheet.webp"
+}

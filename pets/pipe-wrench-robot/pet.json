@@ -1,0 +1,6 @@
+{
+  "id": "pipe-wrench-robot",
+  "displayName": "Pipe Wrench Robot",
+  "description": "A tiny rusty pipe-wrench robot with a single bolt eye, toothed jaw, stacked metal neck, and spindly wire limbs inspired by Machinarium.",
+  "spritesheetPath": "spritesheet.webp"
+}

@@ -1,0 +1,111 @@
+{
+  "id": "snoo",
+  "displayName": "Snoo",
+  "description": "A faithful pink-white mechanical Snoopy-style companion dog Codex pet with oversized round head, soft drooping ears, rose goggles, plush enamel body, and gentle rose-gold joints.",
+  "spritesheetPath": "spritesheet.webp",
+  "states": {
+    "idle": {
+      "atlasRow": "idle",
+      "notes": "Quiet standing idle with tiny blink, slight ear motion, and gentle tail sway."
+    },
+    "walk": {
+      "atlasRows": [
+        "running-right",
+        "running-left"
+      ],
+      "notes": "Directional relaxed walk used for movement and drag-facing behavior."
+    },
+    "curious": {
+      "atlasRow": "review",
+      "notes": "Subtle head tilt and observant look through the round goggles."
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "notes": "Restrained happy greeting with a small paw lift and brighter expression."
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "notes": "Gentle dozing loop with closed eyes, relaxed ears, and soft breathing."
+    },
+    "sip": {
+      "atlasRow": "running",
+      "notes": "Optional text-free pink bottle sip loop that preserves face and goggles readability."
+    },
+    "sit": {
+      "atlasRow": "jumping",
+      "notes": "Cozy seated settle loop stored in the spare atlas row."
+    },
+    "deep_rest": {
+      "atlasRow": "failed",
+      "notes": "Deeper sleepy slump used as an extra rest state."
+    }
+  },
+  "atlasRowSemantics": {
+    "idle": "idle",
+    "running-right": "walk-right",
+    "running-left": "walk-left",
+    "waving": "happy",
+    "jumping": "sit",
+    "failed": "deep-rest",
+    "waiting": "sleep",
+    "running": "sip",
+    "review": "curious"
+  },
+  "requestedActionMap": {
+    "idle": {
+      "atlasRow": "idle",
+      "status": "implemented"
+    },
+    "walk_right": {
+      "atlasRow": "running-right",
+      "status": "implemented"
+    },
+    "walk_left": {
+      "atlasRow": "running-left",
+      "status": "implemented"
+    },
+    "curious": {
+      "atlasRow": "review",
+      "status": "implemented"
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "status": "implemented"
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "status": "implemented"
+    },
+    "drag": {
+      "leftAtlasRow": "running-left",
+      "rightAtlasRow": "running-right",
+      "status": "implemented",
+      "notes": "Directional drag uses the same true-facing walk rows as locomotion."
+    },
+    "sip": {
+      "atlasRow": "running",
+      "status": "implemented",
+      "notes": "Optional text-free bottle sip loop."
+    },
+    "sit": {
+      "atlasRow": "jumping",
+      "status": "implemented"
+    },
+    "deep_rest": {
+      "atlasRow": "failed",
+      "status": "implemented"
+    }
+  },
+  "dragFacingValidation": {
+    "rule": "deltaX < 0 => facing left; deltaX > 0 => facing right",
+    "leftDragUses": "running-left",
+    "rightDragUses": "running-right",
+    "manualVerification": [
+      "left drag uses a true left-facing strip",
+      "right drag uses a true right-facing strip",
+      "walk_left and walk_right are not swapped",
+      "head, goggles, nose, body, paws, and tail stay directionally unified in both walk rows",
+      "left drag never faces right and right drag never faces left"
+    ]
+  }
+}

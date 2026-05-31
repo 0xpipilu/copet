@@ -1,0 +1,119 @@
+{
+  "id": "sunny",
+  "displayName": "Sunny",
+  "description": "A lounging beach-sunbathing mechanical mouse scene pet with white sunglasses, a pink-and-cream parasol, a quilted pink mat, and no visible tail.",
+  "spritesheetPath": "spritesheet.webp",
+  "states": {
+    "idle": {
+      "atlasRow": "idle",
+      "notes": "Calm reclined sunbathing loop with tiny breathing and parasol sway."
+    },
+    "walk": {
+      "atlasRows": [
+        "running-right",
+        "running-left"
+      ],
+      "notes": "Not true walking. These are left-right scene-slide rows where the whole lounging setup glides while Sunny stays reclined."
+    },
+    "curious": {
+      "atlasRow": "review",
+      "notes": "Small head lift and sunglasses-angle change while Sunny keeps lounging."
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "notes": "Gentle contented wiggle and relaxed paw lift without breaking the lounging pose."
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "notes": "Deeper nap-like recline with softer posture and tiny parasol sway."
+    },
+    "probe": {
+      "atlasRow": "running",
+      "notes": "Extra active-lounging adjustment row with tiny shoulder shimmy and mat settle."
+    },
+    "float": {
+      "atlasRow": "jumping",
+      "notes": "Tiny buoyant stretch while Sunny remains on the mat."
+    },
+    "melancholy": {
+      "atlasRow": "failed",
+      "notes": "Gentle over-sunned droop and recovery loop."
+    }
+  },
+  "atlasRowSemantics": {
+    "idle": "idle",
+    "running-right": "scene-slide-right",
+    "running-left": "scene-slide-left",
+    "waving": "happy",
+    "jumping": "float",
+    "failed": "melancholy",
+    "waiting": "sleep",
+    "running": "probe",
+    "review": "curious"
+  },
+  "requestedActionMap": {
+    "idle": {
+      "atlasRow": "idle",
+      "status": "implemented"
+    },
+    "walk_right": {
+      "atlasRow": "running-right",
+      "status": "implemented",
+      "notes": "Scene glides right while Sunny remains reclined on the mat."
+    },
+    "walk_left": {
+      "atlasRow": "running-left",
+      "status": "implemented",
+      "notes": "Scene glides left while Sunny remains reclined on the mat."
+    },
+    "curious": {
+      "atlasRow": "review",
+      "status": "implemented"
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "status": "implemented"
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "status": "implemented"
+    },
+    "drag": {
+      "leftAtlasRow": "running-left",
+      "rightAtlasRow": "running-right",
+      "status": "implemented",
+      "notes": "Directional drag uses the true-facing scene-slide rows rather than a standing walk cycle."
+    },
+    "extra_scene_adjust": {
+      "atlasRow": "running",
+      "status": "implemented",
+      "notes": "Optional auxiliary lounging-adjustment loop."
+    },
+    "extra_stretch": {
+      "atlasRow": "jumping",
+      "status": "implemented",
+      "notes": "Optional buoyant stretch loop."
+    },
+    "extra_droop": {
+      "atlasRow": "failed",
+      "status": "implemented",
+      "notes": "Optional over-sunned droop loop."
+    }
+  },
+  "dragFacingValidation": {
+    "rule": "deltaX < 0 => facing left; deltaX > 0 => facing right",
+    "leftDragUses": "running-left",
+    "rightDragUses": "running-right",
+    "leftRowDerivedFrom": "generated-directly",
+    "rightRowDerivedFrom": "generated-directly",
+    "manualVerification": [
+      "left drag uses a true left-facing strip",
+      "right drag uses a true right-facing strip",
+      "walk-left and walk-right are not swapped",
+      "left-facing row keeps the mouse, mat, and parasol directionally unified",
+      "right-facing row keeps the mouse, mat, and parasol directionally unified",
+      "Sunny stays reclined and does not stand up during drag-facing rows",
+      "sunglasses, parasol, and mat remain present in all directional rows"
+    ]
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "id": "stilt",
+  "displayName": "Stilt",
+  "description": "A calm elegant black-necked stilt Codex pet inspired by Machinarium, with black and white enamel feathers, a needle-thin black mechanical beak, and extremely long slender pink legs.",
+  "spritesheetPath": "spritesheet.webp",
+  "states": {
+    "idle": {
+      "atlasRow": "idle",
+      "notes": "Quiet standing loop with soft blink, slight head tilt, and feather settling."
+    },
+    "walk": {
+      "atlasRows": [
+        "running-right",
+        "running-left"
+      ],
+      "notes": "Directional walk used for drag-facing movement and left-right travel."
+    },
+    "probe": {
+      "atlasRow": "running",
+      "notes": "Ground-probing lean with the beak aligned to body direction."
+    },
+    "curious": {
+      "atlasRow": "review",
+      "notes": "Alert look-around with a slight forward lean."
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "notes": "Small wing-open hop with fast leg taps."
+    },
+    "fluff": {
+      "atlasRow": "failed",
+      "notes": "Feathers puff outward, including the approved motion flecks, then settle."
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "notes": "One-leg sleep with head tucked and eyes closed."
+    },
+    "fly": {
+      "atlasRow": "jumping",
+      "notes": "Light wader flight with unified body and leg direction."
+    }
+  },
+  "atlasRowSemantics": {
+    "idle": "idle",
+    "running-right": "walk-right",
+    "running-left": "walk-left",
+    "waving": "happy",
+    "jumping": "fly",
+    "failed": "fluff",
+    "waiting": "sleep",
+    "running": "probe",
+    "review": "curious"
+  },
+  "requestedActionMap": {
+    "idle": {
+      "atlasRow": "idle",
+      "status": "implemented"
+    },
+    "walk_right": {
+      "atlasRow": "running-right",
+      "status": "implemented"
+    },
+    "walk_left": {
+      "atlasRow": "running-left",
+      "status": "implemented"
+    },
+    "probe": {
+      "atlasRow": "running",
+      "status": "implemented"
+    },
+    "curious": {
+      "atlasRow": "review",
+      "status": "implemented"
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "status": "implemented"
+    },
+    "fluff": {
+      "atlasRow": "failed",
+      "status": "implemented"
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "status": "implemented"
+    },
+    "fly": {
+      "atlasRow": "jumping",
+      "status": "implemented"
+    },
+    "drag": {
+      "leftAtlasRow": "running-left",
+      "rightAtlasRow": "running-right",
+      "status": "implemented",
+      "notes": "Directional drag uses the same true-facing walk strips as locomotion."
+    }
+  },
+  "dragFacingValidation": {
+    "rule": "deltaX < 0 => facing left; deltaX > 0 => facing right",
+    "leftDragUses": "running-left",
+    "rightDragUses": "running-right",
+    "leftRowDerivedFrom": "running-right",
+    "manualVerification": [
+      "left drag uses a true left-facing strip",
+      "right drag uses a true right-facing strip",
+      "walk-left and walk-right are not swapped",
+      "probe beak direction matches body direction",
+      "fly body and trailing legs stay directionally unified"
+    ]
+  }
+}

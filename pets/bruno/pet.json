@@ -1,0 +1,117 @@
+{
+  "id": "bruno",
+  "displayName": "Bruno",
+  "description": "A sturdy vintage mechanical bulldog companion holding a chunky old revolver, closely based on the supplied Spike-like reference character.",
+  "spritesheetPath": "spritesheet.webp",
+  "states": {
+    "idle": {
+      "atlasRow": "idle",
+      "notes": "Stable watchful idle with tiny breathing and a steady gun hand."
+    },
+    "walk": {
+      "atlasRows": [
+        "running-right",
+        "running-left"
+      ],
+      "notes": "Directional heavy bulldog walk rows used for walk_right, walk_left, and drag-facing behavior."
+    },
+    "curious": {
+      "atlasRow": "review",
+      "notes": "Spike-like alert curiosity with widened eyes, slight head tilt, and questioning muzzle."
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "notes": "Restrained satisfied expression with a softer face and slight proud settle."
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "notes": "Heavy drowsy rest with closed eyes and the revolver lowered close to the body."
+    },
+    "guard": {
+      "atlasRow": "running",
+      "notes": "Planted guard stance with subtle scanning motion and dependable old-dog attitude."
+    },
+    "lookout": {
+      "atlasRow": "jumping",
+      "notes": "Compact alert rise and settle used as the lookout support loop."
+    },
+    "grumpy": {
+      "atlasRow": "failed",
+      "notes": "Mildly annoyed or tired support loop that keeps Bruno sturdy and readable."
+    }
+  },
+  "atlasRowSemantics": {
+    "idle": "idle",
+    "running-right": "walk-right",
+    "running-left": "walk-left",
+    "waving": "happy",
+    "jumping": "lookout",
+    "failed": "grumpy",
+    "waiting": "sleep",
+    "running": "guard",
+    "review": "curious"
+  },
+  "requestedActionMap": {
+    "idle": {
+      "atlasRow": "idle",
+      "status": "implemented"
+    },
+    "walk_right": {
+      "atlasRow": "running-right",
+      "status": "implemented"
+    },
+    "walk_left": {
+      "atlasRow": "running-left",
+      "status": "implemented"
+    },
+    "curious": {
+      "atlasRow": "review",
+      "status": "implemented"
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "status": "implemented"
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "status": "implemented"
+    },
+    "drag": {
+      "leftAtlasRow": "running-left",
+      "rightAtlasRow": "running-right",
+      "status": "implemented",
+      "notes": "Directional drag reuses the true-facing walk rows."
+    },
+    "guard": {
+      "atlasRow": "running",
+      "status": "implemented",
+      "notes": "Fixed-atlas support row reserved for Bruno's planted guard loop."
+    },
+    "lookout": {
+      "atlasRow": "jumping",
+      "status": "implemented",
+      "notes": "Fixed-atlas support row used for Bruno's compact alert rise."
+    },
+    "grumpy_support": {
+      "atlasRow": "failed",
+      "status": "implemented",
+      "notes": "Fixed-atlas support row used for a mildly annoyed or tired Bruno loop."
+    }
+  },
+  "dragFacingValidation": {
+    "rule": "deltaX < 0 => facing left; deltaX > 0 => facing right",
+    "leftDragUses": "running-left",
+    "rightDragUses": "running-right",
+    "leftRowDerivedFrom": "generated-directly",
+    "rightRowDerivedFrom": "generated-directly",
+    "manualVerification": [
+      "left drag uses the true left-facing Bruno walk row",
+      "right drag uses the true right-facing Bruno walk row",
+      "walk_left and walk_right are not swapped",
+      "head, muzzle, eyes, torso, gait, and revolver direction agree in both walk rows",
+      "left drag never faces right",
+      "right drag never faces left",
+      "Bruno remains readable at small size as a stout mechanical bulldog with brown-red belts and a revolver"
+    ]
+  }
+}

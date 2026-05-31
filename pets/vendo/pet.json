@@ -1,0 +1,6 @@
+{
+  "id": "vendo",
+  "displayName": "Vendo",
+  "description": "A dented vending-machine robot with a coin-slot mouth, faded warning decals, and a shy Machinarium-style wobble.",
+  "spritesheetPath": "spritesheet.webp"
+}

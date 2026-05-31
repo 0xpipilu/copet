@@ -1,0 +1,58 @@
+{
+  "id": "vermora",
+  "displayName": "Vermora",
+  "description": "A calm elegant mechanical painted stork Codex pet inspired by Machinarium, with a very long yellow-orange beak, white body feathers, black patterned wing feathers, soft pink tail gradient, orange bare head skin, and slender pale pink legs.",
+  "spritesheetPath": "spritesheet.webp",
+  "states": {
+    "idle": {
+      "atlasRow": "idle",
+      "notes": "Quiet standing loop with a slow blink, soft feather motion, and a tiny beak adjustment."
+    },
+    "blink": {
+      "atlasRow": "idle",
+      "notes": "Uses the idle row, which already contains the subtle blink cycle."
+    },
+    "walk": {
+      "atlasRows": [
+        "running-right",
+        "running-left"
+      ],
+      "notes": "Graceful high-step walking loop with explicit right-facing and left-facing rows."
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "notes": "Soft feather bloom, gentle tail flutter, and a light chirp-like beak opening."
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "notes": "One-leg resting sleep with a tucked neck, beak close to the body, and fluffed feathers."
+    },
+    "curious": {
+      "atlasRow": "review",
+      "notes": "Curious ground-inspection loop with a natural S-curve neck and lowered beak."
+    },
+    "fly": {
+      "atlasRow": "jumping",
+      "notes": "A short graceful lift with wing spread, reading as a delicate takeoff flutter."
+    },
+    "damaged": {
+      "atlasRow": "failed",
+      "notes": "Gentle deflated posture with a lowered beak and inward-settling feathers."
+    },
+    "busy": {
+      "atlasRow": "running",
+      "notes": "Quiet maintenance cycle as Vermora tidies its chest feathers with its beak."
+    }
+  },
+  "atlasRowSemantics": {
+    "idle": "idle-blink",
+    "running-right": "walk-right",
+    "running-left": "walk-left",
+    "waving": "happy",
+    "jumping": "fly-lift",
+    "failed": "damaged",
+    "waiting": "sleep",
+    "running": "busy-cycle",
+    "review": "curious"
+  }
+}

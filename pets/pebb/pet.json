@@ -1,0 +1,112 @@
+{
+  "id": "pebb",
+  "displayName": "Pebb",
+  "description": "A faithful round mechanical penguin Codex pet with a sky-blue worn metal shell, cream belly, warm yellow glowing eyes, yellow beak and feet, pink cheeks, and two tiny pale-blue robot fish hugged tightly in its short arms.",
+  "spritesheetPath": "spritesheet.webp",
+  "states": {
+    "idle": {
+      "atlasRow": "idle",
+      "notes": "Quiet breathing idle with a soft eye-glow flicker while both fish stay snug in the hug."
+    },
+    "walk": {
+      "atlasRows": [
+        "running-right",
+        "running-left"
+      ],
+      "notes": "Short careful directional waddle that keeps both fish hugged securely."
+    },
+    "curious": {
+      "atlasRow": "review",
+      "notes": "Small attentive head tilt and observant lean without loosening the hug."
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "notes": "Warm pleased bounce with a tiny beak smile while still cuddling the fish."
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "notes": "Main cozy sleep loop with closed eyes and slow breathing while hugging both fish."
+    },
+    "cuddle": {
+      "atlasRow": "jumping",
+      "notes": "Extra snug cuddle loop with a tiny upward bob and tighter fish squeeze."
+    },
+    "probe": {
+      "atlasRow": "running",
+      "notes": "In-place cuddle-shuffle that resettles the fish without directional travel."
+    },
+    "deep_rest": {
+      "atlasRow": "failed",
+      "notes": "Deeper low-power sleepy curl with a heavier tucked posture."
+    }
+  },
+  "atlasRowSemantics": {
+    "idle": "idle",
+    "running-right": "walk-right",
+    "running-left": "walk-left",
+    "waving": "happy",
+    "jumping": "cuddle",
+    "failed": "deep-rest",
+    "waiting": "sleep",
+    "running": "cuddle-shuffle",
+    "review": "curious"
+  },
+  "requestedActionMap": {
+    "idle": {
+      "atlasRow": "idle",
+      "status": "implemented"
+    },
+    "walk_right": {
+      "atlasRow": "running-right",
+      "status": "implemented"
+    },
+    "walk_left": {
+      "atlasRow": "running-left",
+      "status": "implemented"
+    },
+    "curious": {
+      "atlasRow": "review",
+      "status": "implemented"
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "status": "implemented"
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "status": "implemented"
+    },
+    "drag": {
+      "leftAtlasRow": "running-left",
+      "rightAtlasRow": "running-right",
+      "status": "implemented",
+      "notes": "Directional drag uses the true-facing walk rows so the beak, body, arms, and fish all match the drag direction."
+    },
+    "cuddle": {
+      "atlasRow": "jumping",
+      "status": "implemented",
+      "notes": "Fixed atlas spare row used as an explicit cuddle state."
+    },
+    "cuddle_shuffle": {
+      "atlasRow": "running",
+      "status": "implemented"
+    },
+    "deep_rest": {
+      "atlasRow": "failed",
+      "status": "implemented"
+    }
+  },
+  "dragFacingValidation": {
+    "rule": "deltaX < 0 => facing left; deltaX > 0 => facing right",
+    "leftDragUses": "running-left",
+    "rightDragUses": "running-right",
+    "leftRowDerivedFrom": "running-right",
+    "manualVerification": [
+      "left drag uses the left-facing walk row",
+      "right drag uses the right-facing walk row",
+      "walk_left and walk_right are not swapped",
+      "head, beak, body, arms, feet, and both fish stay directionally unified in both walk rows",
+      "left drag never faces right and right drag never faces left"
+    ]
+  }
+}

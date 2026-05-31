@@ -1,0 +1,110 @@
+{
+  "id": "marten",
+  "displayName": "Marten",
+  "description": "A mischievous yellow-throated marten pet with a Machinarium-inspired brass-mechanical body, black face, golden throat, and huge fluffy tail.",
+  "spritesheetPath": "spritesheet.webp",
+  "states": {
+    "idle": {
+      "atlasRow": "idle",
+      "notes": "Quiet stand-or-sit loop with blink, ear twitch, nose sniff, and slow tail sway."
+    },
+    "walk": {
+      "atlasRows": [
+        "running-right",
+        "running-left"
+      ],
+      "notes": "Directional quadruped walk used for drag-facing movement."
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "notes": "Tiny in-place bounce with raised-tail wag and brighter playful expression."
+    },
+    "alert": {
+      "atlasRow": "review",
+      "notes": "Curious head tilt, forward ears, and small sniff."
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "notes": "Curled sleeping ball with the tail wrapped over the body."
+    },
+    "damaged": {
+      "atlasRow": "failed",
+      "notes": "Repurposed here as a fluff reaction where chest and tail poof outward, then settle."
+    }
+  },
+  "atlasRowSemantics": {
+    "idle": "idle",
+    "running-right": "walk-right",
+    "running-left": "walk-left",
+    "waving": "happy",
+    "jumping": "pounce",
+    "failed": "fluff",
+    "waiting": "sleep",
+    "running": "run",
+    "review": "curious"
+  },
+  "requestedActionMap": {
+    "idle": {
+      "atlasRow": "idle",
+      "status": "implemented"
+    },
+    "walk_right": {
+      "atlasRow": "running-right",
+      "status": "implemented"
+    },
+    "walk_left": {
+      "atlasRow": "running-left",
+      "status": "implemented"
+    },
+    "run": {
+      "atlasRow": "running",
+      "status": "implemented"
+    },
+    "pounce": {
+      "atlasRow": "jumping",
+      "status": "implemented"
+    },
+    "curious": {
+      "atlasRow": "review",
+      "status": "implemented"
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "status": "implemented"
+    },
+    "fluff": {
+      "atlasRow": "failed",
+      "status": "implemented"
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "status": "implemented"
+    },
+    "sneak": {
+      "atlasRow": "running",
+      "status": "approximation",
+      "notes": "The fixed 9-row Codex atlas does not provide a separate installed sneak row, so the low-body run row is the closest locomotion approximation."
+    },
+    "peek": {
+      "atlasRow": "review",
+      "status": "approximation",
+      "notes": "The fixed 9-row Codex atlas does not provide a separate installed peek row, so the curious head-forward row is the closest expressive approximation."
+    },
+    "roll": {
+      "atlasRow": "failed",
+      "status": "not-separate",
+      "notes": "The fixed 9-row Codex atlas was fully allocated to the main installable set, so roll is not a separate installed row in this package."
+    }
+  },
+  "dragFacingValidation": {
+    "rule": "deltaX < 0 => facing left; deltaX > 0 => facing right",
+    "leftDragUses": "running-left",
+    "rightDragUses": "running-right",
+    "leftRowDerivedFrom": "running-right",
+    "manualVerification": [
+      "left drag uses a true left-facing strip",
+      "right drag uses a true right-facing strip",
+      "walk-left and walk-right are not swapped"
+    ]
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "id": "spot",
+  "displayName": "Spot",
+  "description": "A tiny pink wheeled scout companion robot with twin warm searchlight eyes and a pink baseball cap.",
+  "spritesheetPath": "spritesheet.webp",
+  "states": {
+    "idle": {
+      "atlasRow": "idle",
+      "notes": "Stable companion idle with gentle lamp-eye breathing glow and tiny body bob."
+    },
+    "walk": {
+      "atlasRows": [
+        "running-right",
+        "running-left"
+      ],
+      "notes": "Directional wheel-roll rows used for roll_right, roll_left, and drag-facing behavior."
+    },
+    "curious": {
+      "atlasRow": "review",
+      "notes": "Observant pause with brighter lamp eyes and a small head-body tilt."
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "notes": "Restrained pleased response with tiny uplift and brighter lamp eyes."
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "notes": "Low-power resting loop with dimmer lamps and relaxed chassis posture."
+    },
+    "active": {
+      "atlasRow": "running",
+      "notes": "Gentle active monitoring loop kept as a support state."
+    },
+    "hop": {
+      "atlasRow": "jumping",
+      "notes": "Small buoyant suspension hop and settle."
+    },
+    "melancholy": {
+      "atlasRow": "failed",
+      "notes": "Tender low-power droop without damage or panic."
+    }
+  },
+  "atlasRowSemantics": {
+    "idle": "idle",
+    "running-right": "roll-right",
+    "running-left": "roll-left",
+    "waving": "happy",
+    "jumping": "hop",
+    "failed": "melancholy",
+    "waiting": "sleep",
+    "running": "active",
+    "review": "curious"
+  },
+  "requestedActionMap": {
+    "idle": {
+      "atlasRow": "idle",
+      "status": "implemented"
+    },
+    "roll_right": {
+      "atlasRow": "running-right",
+      "status": "implemented"
+    },
+    "roll_left": {
+      "atlasRow": "running-left",
+      "status": "implemented"
+    },
+    "curious": {
+      "atlasRow": "review",
+      "status": "implemented"
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "status": "implemented"
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "status": "implemented"
+    },
+    "drag": {
+      "leftAtlasRow": "running-left",
+      "rightAtlasRow": "running-right",
+      "status": "implemented",
+      "notes": "Directional drag reuses the true-facing wheel-roll rows."
+    },
+    "active_support": {
+      "atlasRow": "running",
+      "status": "implemented",
+      "notes": "Extra support loop retained to complete the fixed atlas."
+    },
+    "hop_support": {
+      "atlasRow": "jumping",
+      "status": "implemented",
+      "notes": "Extra support loop retained to complete the fixed atlas."
+    },
+    "low_power_support": {
+      "atlasRow": "failed",
+      "status": "implemented",
+      "notes": "Extra support loop retained to complete the fixed atlas."
+    }
+  },
+  "dragFacingValidation": {
+    "rule": "deltaX < 0 => facing left; deltaX > 0 => facing right",
+    "leftDragUses": "running-left",
+    "rightDragUses": "running-right",
+    "leftRowDerivedFrom": "generated-directly",
+    "rightRowDerivedFrom": "generated-directly",
+    "manualVerification": [
+      "left drag uses the true left-facing wheel-roll row",
+      "right drag uses the true right-facing wheel-roll row",
+      "roll_left and roll_right are not swapped",
+      "lamp eyes, central sensor, cap brim, chassis, and wheel direction all agree with travel direction",
+      "left drag never faces right",
+      "right drag never faces left",
+      "Spot remains readable at small size as a capped twin-headlamp wheeled robot"
+    ]
+  }
+}

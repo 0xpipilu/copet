@@ -1,0 +1,6 @@
+{
+  "id": "pub-player",
+  "displayName": "Pub Player",
+  "description": "A tiny rusty pub-game robot with a domed tin head, stacked metal body, spindly legs, and a little attached game tray inspired by Machinarium.",
+  "spritesheetPath": "spritesheet.webp"
+}

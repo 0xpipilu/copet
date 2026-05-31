@@ -1,0 +1,110 @@
+{
+  "id": "tomo",
+  "displayName": "Tomo",
+  "description": "A faithful pink Tom-like mechanical cat Codex pet based on the provided reference image, with a wide soft hat, warm friendly face, plush-toy body, and light antique rose-gold joints.",
+  "spritesheetPath": "spritesheet.webp",
+  "states": {
+    "idle": {
+      "atlasRow": "idle",
+      "notes": "Calm standing idle with tiny blink, slight hat-brim sway, and soft tail motion."
+    },
+    "walk": {
+      "atlasRows": [
+        "running-right",
+        "running-left"
+      ],
+      "notes": "Directional relaxed walk rows used for movement and drag-facing behavior."
+    },
+    "curious": {
+      "atlasRow": "review",
+      "notes": "Gentle head tilt and observant friendly look."
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "notes": "Restrained pleased gesture with a small paw lift and warmer expression."
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "notes": "Main dozing loop with closed eyes, relaxed limbs, and stable hat."
+    },
+    "sit": {
+      "atlasRow": "jumping",
+      "notes": "Dedicated seated rest loop stored in the spare atlas row."
+    },
+    "probe": {
+      "atlasRow": "running",
+      "notes": "Gentle in-place task loop without directional travel or extra props."
+    },
+    "deep_rest": {
+      "atlasRow": "failed",
+      "notes": "Deeper sleepy curl used as a calm extra rest state."
+    }
+  },
+  "atlasRowSemantics": {
+    "idle": "idle",
+    "running-right": "walk-right",
+    "running-left": "walk-left",
+    "waving": "happy",
+    "jumping": "sit",
+    "failed": "deep-rest",
+    "waiting": "sleep",
+    "running": "task-loop",
+    "review": "curious"
+  },
+  "requestedActionMap": {
+    "idle": {
+      "atlasRow": "idle",
+      "status": "implemented"
+    },
+    "walk_right": {
+      "atlasRow": "running-right",
+      "status": "implemented"
+    },
+    "walk_left": {
+      "atlasRow": "running-left",
+      "status": "implemented"
+    },
+    "curious": {
+      "atlasRow": "review",
+      "status": "implemented"
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "status": "implemented"
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "status": "implemented"
+    },
+    "sit": {
+      "atlasRow": "jumping",
+      "status": "implemented"
+    },
+    "drag": {
+      "leftAtlasRow": "running-left",
+      "rightAtlasRow": "running-right",
+      "status": "implemented",
+      "notes": "Directional drag uses the true-facing walk rows rather than mirrored guesses."
+    },
+    "task_loop": {
+      "atlasRow": "running",
+      "status": "implemented"
+    },
+    "deep_rest": {
+      "atlasRow": "failed",
+      "status": "implemented"
+    }
+  },
+  "dragFacingValidation": {
+    "rule": "deltaX < 0 => facing left; deltaX > 0 => facing right",
+    "leftDragUses": "running-left",
+    "rightDragUses": "running-right",
+    "manualVerification": [
+      "left drag uses a true left-facing strip",
+      "right drag uses a true right-facing strip",
+      "walk_left and walk_right are not swapped",
+      "head, body, paws, tail, and hat stay directionally unified in both walk rows",
+      "left drag never faces right and right drag never faces left"
+    ]
+  }
+}

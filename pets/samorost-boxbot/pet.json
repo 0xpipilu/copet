@@ -1,0 +1,6 @@
+{
+  "id": "samorost-boxbot",
+  "displayName": "Samorost Boxbot",
+  "description": "A tiny freestanding riveted box robot with twin bolt eyes, a hanging chin plate, wiry antenna, two clear side arms, and stubby little legs inspired by the attached Samorost-style robot.",
+  "spritesheetPath": "spritesheet.webp"
+}

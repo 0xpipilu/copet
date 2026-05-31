@@ -1,0 +1,107 @@
+{
+  "id": "skipp",
+  "displayName": "Skipp",
+  "description": "A faithful Codex pet adaptation of a retro mechanical sea captain with a huge long nose, curled mustache, worn blue captain coat and tricorn hat, brass joints, and stout little metal boots.",
+  "spritesheetPath": "spritesheet.webp",
+  "states": {
+    "idle": {
+      "atlasRow": "idle",
+      "notes": "Calm watchful captain idle with tiny blink, mustache twitch, and barely-there collar settle."
+    },
+    "walk": {
+      "atlasRows": [
+        "running-right",
+        "running-left"
+      ],
+      "notes": "Short steady deck-patrol walk rows used for both travel and drag-facing behavior."
+    },
+    "curious": {
+      "atlasRow": "review",
+      "notes": "Thoughtful route-check pose with hand near mustache and a focused inquisitive head tilt."
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "notes": "Restrained proud captain moment with a small pleased gesture and dignified self-satisfaction."
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "notes": "Standing doze with closed eyes, lowered head, and subtle hat and mustache settling."
+    },
+    "lookout": {
+      "atlasRow": "running",
+      "notes": "Independent lookout row using a compact brass spyglass and subtle horizon-check motion."
+    },
+    "brace": {
+      "atlasRow": "jumping",
+      "notes": "Small alert brace-and-rise motion, more like a tiny deck hop than an athletic jump."
+    },
+    "grumpy": {
+      "atlasRow": "failed",
+      "notes": "Stubborn irritated captain slump and recovery, kept dry and effect-free."
+    }
+  },
+  "atlasRowSemantics": {
+    "idle": "idle",
+    "running-right": "walk-right",
+    "running-left": "walk-left",
+    "waving": "happy",
+    "jumping": "brace",
+    "failed": "grumpy",
+    "waiting": "sleep",
+    "running": "lookout",
+    "review": "curious"
+  },
+  "requestedActionMap": {
+    "idle": {
+      "atlasRow": "idle",
+      "status": "implemented"
+    },
+    "walk_right": {
+      "atlasRow": "running-right",
+      "status": "implemented"
+    },
+    "walk_left": {
+      "atlasRow": "running-left",
+      "status": "implemented"
+    },
+    "curious": {
+      "atlasRow": "review",
+      "status": "implemented"
+    },
+    "happy": {
+      "atlasRow": "waving",
+      "status": "implemented"
+    },
+    "sleep": {
+      "atlasRow": "waiting",
+      "status": "implemented"
+    },
+    "drag": {
+      "leftAtlasRow": "running-left",
+      "rightAtlasRow": "running-right",
+      "status": "implemented",
+      "notes": "Directional drag uses the true left and right walk rows, not approximations."
+    },
+    "lookout": {
+      "atlasRow": "running",
+      "status": "implemented",
+      "notes": "Fixed atlas had no dedicated lookout row, so the running row slot was intentionally remapped to an independent lookout strip."
+    }
+  },
+  "dragFacingValidation": {
+    "rule": "deltaX < 0 => facing left; deltaX > 0 => facing right",
+    "leftDragUses": "running-left",
+    "rightDragUses": "running-right",
+    "leftRowDerivedFrom": "generated-directly",
+    "rightRowDerivedFrom": "generated-directly",
+    "manualVerification": [
+      "left drag uses a true left-facing strip",
+      "right drag uses a true right-facing strip",
+      "walk_left and walk_right are not swapped",
+      "walk_left head, nose, mustache, coat front, and gait all face left",
+      "walk_right head, nose, mustache, coat front, and gait all face right",
+      "long nose, tricorn hat, curled mustache, and high collar stay readable at small size",
+      "lookout remains a separate row and does not interfere with drag mapping"
+    ]
+  }
+}
