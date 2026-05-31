@@ -75,9 +75,12 @@ pets/
 index.json            # Generated catalog data in JSON
 catalog.js            # Browser-ready catalog payload
 index.html            # Ultra-minimalist showcase page
+favicon.png           # Premium HD browser tab icon (Blackbird logo)
+og-image.png          # High-definition social preview cover art
 scripts/
   build_index.py      # Script to rebuild catalog index
   generate_thumbnails.py # Script to generate base thumbnails
+  generate_favicon.py # Script to generate the browser tab icon
 ```
 
 ### Updating the Catalog
@@ -90,6 +93,12 @@ python3 scripts/build_index.py
 To update documentation thumbnails for all pets from their spritesheets:
 ```bash
 python3 scripts/generate_thumbnails.py
+```
+
+### Generating Favicon
+To update the high-definition favicon.png browser tab icon from the Blackbird assets:
+```bash
+python3 scripts/generate_favicon.py
 ```
 
 ---
@@ -120,9 +129,12 @@ pets/
 index.json            # 自动生成的整站 JSON 索引
 catalog.js            # 浏览器直接加载的 JS 索引
 index.html            # 超极简的线上画廊单页面
+favicon.png           # 高清浏览器页签图标（以黑鸟形象为 Logo）
+og-image.png          # 高清社交预览封面大图
 scripts/
   build_index.py      # 重建整站索引的 Python 脚本
   generate_thumbnails.py # 从精灵图自动裁剪生成静态缩略图的脚本
+  generate_favicon.py # 自动裁剪、居中缩放生成浏览器图标的脚本
 ```
 
 ### 更新索引
@@ -135,6 +147,12 @@ python3 scripts/build_index.py
 需要更新宠物在 README 文档中的静态缩略图时，运行：
 ```bash
 python3 scripts/generate_thumbnails.py
+```
+
+### 生成浏览器图标
+需要从黑鸟资源更新高清浏览器页签图标时，运行：
+```bash
+python3 scripts/generate_favicon.py
 ```
 
 ---
