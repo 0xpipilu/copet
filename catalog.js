@@ -1,5 +1,5 @@
 window.__CODEX_PETS__ = {
-  "count": 84,
+  "count": 83,
   "pets": [
     {
       "slug": "battle-damaged-idle",
@@ -2117,110 +2117,6 @@ window.__CODEX_PETS__ = {
       "spritesheetPath": "spritesheet.webp",
       "petJsonPath": "pets/droopy7/pet.json",
       "spritesheetFile": "pets/droopy7/spritesheet.webp",
-      "stateNames": [],
-      "stateCount": 0,
-      "atlas": {
-        "columns": 8,
-        "rows": 9,
-        "frameWidth": 192,
-        "frameHeight": 208,
-        "sheetWidth": 1536,
-        "sheetHeight": 1872
-      },
-      "previewRows": [
-        {
-          "key": "idle",
-          "label": "Idle",
-          "rowIndex": 0,
-          "frames": 6,
-          "durationMs": 1100,
-          "semantic": null,
-          "notes": ""
-        },
-        {
-          "key": "running-right",
-          "label": "Run Right",
-          "rowIndex": 1,
-          "frames": 8,
-          "durationMs": 980,
-          "semantic": null,
-          "notes": ""
-        },
-        {
-          "key": "running-left",
-          "label": "Run Left",
-          "rowIndex": 2,
-          "frames": 8,
-          "durationMs": 980,
-          "semantic": null,
-          "notes": ""
-        },
-        {
-          "key": "waving",
-          "label": "Waving",
-          "rowIndex": 3,
-          "frames": 4,
-          "durationMs": 840,
-          "semantic": null,
-          "notes": ""
-        },
-        {
-          "key": "jumping",
-          "label": "Jumping",
-          "rowIndex": 4,
-          "frames": 5,
-          "durationMs": 900,
-          "semantic": null,
-          "notes": ""
-        },
-        {
-          "key": "failed",
-          "label": "Failed",
-          "rowIndex": 5,
-          "frames": 8,
-          "durationMs": 1120,
-          "semantic": null,
-          "notes": ""
-        },
-        {
-          "key": "waiting",
-          "label": "Waiting",
-          "rowIndex": 6,
-          "frames": 6,
-          "durationMs": 1260,
-          "semantic": null,
-          "notes": ""
-        },
-        {
-          "key": "running",
-          "label": "Running",
-          "rowIndex": 7,
-          "frames": 6,
-          "durationMs": 960,
-          "semantic": null,
-          "notes": ""
-        },
-        {
-          "key": "review",
-          "label": "Review",
-          "rowIndex": 8,
-          "frames": 6,
-          "durationMs": 1080,
-          "semantic": null,
-          "notes": ""
-        }
-      ],
-      "defaultPreviewRow": "idle"
-    },
-    {
-      "slug": "fairy-wren",
-      "folder": "pets/fairy-wren",
-      "id": "fairy-wren",
-      "displayName": "Fairy-Wren",
-      "description": "A tiny fluffy blue-purple mechanical fairy-wren inspired by Machinarium, simplified into a Codex pet sprite.",
-      "spritesheetPath": "spritesheet.webp",
-      "petJsonPath": "pets/fairy-wren/pet.json",
-      "spritesheetFile": "pets/fairy-wren/spritesheet.webp",
       "stateNames": [],
       "stateCount": 0,
       "atlas": {
