@@ -101,15 +101,6 @@ def main():
   <defs>
     <style>
       .sprite {{
-        transform: translate(0, 0);
-      }}
-      @media (hover: hover) {{
-        svg:hover .sprite {{
-          animation: play-idle 1.1s steps(6) infinite;
-        }}
-      }}
-      /* Hover fallback style */
-      svg:hover .sprite {{
         animation: play-idle 1.1s steps(6) infinite;
       }}
       @keyframes play-idle {{
