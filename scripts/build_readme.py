@@ -29,7 +29,7 @@ def build_readme():
             slug = pet["slug"]
             name = pet["displayName"]
             # Use relative path so it renders correctly on both GitHub repository page and local check
-            img_tag = f'<img src="pets/{slug}/base.png" width="80" alt="{name}" />'
+            img_tag = f'<img src="pets/{slug}/animated.svg" width="80" alt="{name}" />'
             html_lines.append(f'    <td align="center" valign="middle" width="160" height="160">{img_tag}</td>')
         
         # Pad the last row with empty cells of the exact same dimensions to maintain perfect alignment

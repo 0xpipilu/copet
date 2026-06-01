@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 208" width="100%" height="100%">
+  <defs>
+    <style>
+      .sprite {
+        transform: translate(0, 0);
+      }
+      @media (hover: hover) {
+        svg:hover .sprite {
+          animation: play-idle 1.1s steps(6) infinite;
+        }
+      }
+      /* Hover fallback style */
+      svg:hover .sprite {
+        animation: play-idle 1.1s steps(6) infinite;
+      }
+      @keyframes play-idle {
+        from { transform: translate(0, 0); }
+        to { transform: translate(-1152px, 0); }
+      }
+    </style>
+  </defs>
+  <g width="192" height="208" clip-path="url(#clip)">
+    <clipPath id="clip">
+      <rect width="192" height="208" />
+    </clipPath>
+    <image class="sprite" href="https://raw.githubusercontent.com/0xpipilu/codpet/main/pets/the-drummer/spritesheet.webp" width="1536" height="1872" />
+  </g>
+</svg>

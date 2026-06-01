@@ -70,8 +70,44 @@ def main():
                 
                 output_path = folder_path / "base.png"
                 cropped.save(output_path, "PNG", optimize=True)
-                # Print dot to show progress
                 print(f"Created base.png for {slug}")
+                
+                # Generate animated.svg for GitHub README hover animation
+                # We use absolute URL for raw.githubusercontent.com to bypass GitHub Camo proxy restrictions on relative links inside SVGs.
+                raw_url = f"https://raw.githubusercontent.com/0xpipilu/codpet/main/pets/{slug}/spritesheet.webp"
+                total_idle_width = fw * 6
+                svg_content = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {fw} {fh}" width="100%" height="100%">
+  <defs>
+    <style>
+      .sprite {{
+        transform: translate(0, 0);
+      }}
+      @media (hover: hover) {{
+        svg:hover .sprite {{
+          animation: play-idle 1.1s steps(6) infinite;
+        }}
+      }}
+      /* Hover fallback style */
+      svg:hover .sprite {{
+        animation: play-idle 1.1s steps(6) infinite;
+      }}
+      @keyframes play-idle {{
+        from {{ transform: translate(0, 0); }}
+        to {{ transform: translate(-{total_idle_width}px, 0); }}
+      }}
+    </style>
+  </defs>
+  <g width="{fw}" height="{fh}" clip-path="url(#clip)">
+    <clipPath id="clip">
+      <rect width="{fw}" height="{fh}" />
+    </clipPath>
+    <image class="sprite" href="{raw_url}" width="{atlas.get('sheetWidth', 1536)}" height="{atlas.get('sheetHeight', 1872)}" />
+  </g>
+</svg>
+"""
+                svg_path = folder_path / "animated.svg"
+                svg_path.write_text(svg_content.strip() + "\n", encoding="utf-8")
+                print(f"Created animated.svg for {slug}")
         except Exception as e:
             print(f"Error processing {slug}: {e}")
 

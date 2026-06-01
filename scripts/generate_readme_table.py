@@ -29,7 +29,7 @@ def main():
     for pet in pets:
         slug = pet["slug"]
         name = pet["displayName"]
-        img_tag = f'<img src="pets/{slug}/base.png" width="80" alt="{name}" />'
+        img_tag = f'<img src="pets/{slug}/animated.svg" width="80" alt="{name}" />'
         cell = f"{img_tag}<br>**{name}**"
         current_row.append(cell)
         
