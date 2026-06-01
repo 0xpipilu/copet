@@ -253,6 +253,181 @@
       @media (max-width: 400px) {
         .gallery { grid-template-columns: repeat(2, 1fr); }
       }
+
+      /* — Admin Panel — */
+      .admin-panel {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        z-index: 100;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        color: #0a0a0a;
+      }
+
+      .admin-panel.active {
+        display: flex;
+      }
+
+      .admin-card {
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        width: 100%;
+        max-width: 500px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        display: flex;
+        flex-direction: column;
+        max-height: 90vh;
+        overflow: hidden;
+      }
+
+      .admin-header {
+        padding: 16px 20px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .admin-title {
+        font-family: 'Nanum Pen Script', cursive;
+        font-size: 26px;
+        font-weight: bold;
+        color: #0a0a0a;
+      }
+
+      .admin-close {
+        font-size: 24px;
+        cursor: pointer;
+        color: rgba(0, 0, 0, 0.4);
+        transition: color 150ms;
+        line-height: 1;
+      }
+
+      .admin-close:hover {
+        color: #0a0a0a;
+      }
+
+      .admin-body {
+        padding: 20px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .admin-stat-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .admin-stat-card {
+        background: #f6f6f6;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        border-radius: 8px;
+        padding: 12px;
+        text-align: center;
+      }
+
+      .admin-stat-val {
+        font-size: 24px;
+        font-weight: bold;
+        color: #0a0a0a;
+      }
+
+      .admin-stat-lbl {
+        font-size: 10px;
+        color: rgba(0, 0, 0, 0.5);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-top: 2px;
+      }
+
+      .admin-list {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .admin-list-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 12px;
+        background: #f6f6f6;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        border-radius: 6px;
+        font-size: 13px;
+      }
+
+      .admin-list-name {
+        font-weight: 500;
+        color: #0a0a0a;
+      }
+
+      .admin-list-val {
+        color: rgba(0, 0, 0, 0.5);
+        font-weight: bold;
+      }
+
+      .admin-section-title {
+        font-size: 13px;
+        font-weight: 600;
+        color: #0a0a0a;
+        margin-bottom: 6px;
+      }
+
+      .admin-info-card {
+        background: rgba(86, 242, 100, 0.08);
+        border: 1px solid rgba(86, 242, 100, 0.2);
+        border-radius: 8px;
+        padding: 12px;
+        font-size: 12px;
+        line-height: 1.4;
+        color: rgba(0, 0, 0, 0.7);
+      }
+
+      .admin-actions {
+        display: flex;
+        gap: 8px;
+      }
+
+      .admin-btn {
+        flex: 1;
+        background: #0a0a0a;
+        color: #fff;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 500;
+        text-align: center;
+        cursor: pointer;
+        transition: opacity 150ms;
+        border: none;
+      }
+
+      .admin-btn:hover {
+        opacity: 0.9;
+      }
+
+      .admin-btn-sec {
+        background: transparent;
+        color: #0a0a0a;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+
+      .admin-btn-sec:hover {
+        background: #f6f6f6;
+      }
     </style>
   </head>
   <body>
@@ -296,17 +471,7 @@
       const DL_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`;
 
       function getMockDownloadCount(slug) {
-        let hash = 0;
-        for (let i = 0; i < slug.length; i++) {
-          hash = slug.charCodeAt(i) + ((hash << 5) - hash);
-        }
-        const base = 120 + Math.abs(hash % 1760);
-        const extra = parseInt(localStorage.getItem(`dl_${slug}`) || "0", 10);
-        const count = base + extra;
-        if (count >= 1000) {
-          return (count / 1000).toFixed(1) + "k";
-        }
-        return count;
+        return parseInt(localStorage.getItem(`dl_${slug}`) || "0", 10);
       }
 
       /* ---- Sprite engine ---- */
@@ -571,11 +736,122 @@ Move your extracted pet folder directly into the Codex local pets folder (no cli
 
           allPets = catalog.pets || [];
           renderGallery();
+          
+          // Page view tracking
+          const views = parseInt(localStorage.getItem("page_views") || "0", 10) + 1;
+          localStorage.setItem("page_views", views);
+
+          // Admin Panel Functions
+          const adminPanel = document.getElementById("adminPanel");
+          const adminCloseBtn = document.getElementById("adminCloseBtn");
+          const adminCloseBtn2 = document.getElementById("adminCloseBtn2");
+          const adminClearBtn = document.getElementById("adminClearBtn");
+          const statPageviews = document.getElementById("statPageviews");
+          const statDownloads = document.getElementById("statDownloads");
+          const adminDownloadsList = document.getElementById("adminDownloadsList");
+
+          function openAdminPanel() {
+            statPageviews.textContent = localStorage.getItem("page_views") || "1";
+            
+            let totalDls = 0;
+            let listHtml = "";
+            
+            allPets.forEach(pet => {
+              const count = parseInt(localStorage.getItem(`dl_${pet.slug}`) || "0", 10);
+              totalDls += count;
+              
+              if (count > 0) {
+                listHtml += `
+                  <div class="admin-list-item">
+                    <span class="admin-list-name">${esc(pet.displayName)}</span>
+                    <span class="admin-list-val">${count} downloads</span>
+                  </div>`;
+              }
+            });
+            
+            statDownloads.textContent = totalDls;
+            adminDownloadsList.innerHTML = listHtml || `<div style="text-align:center; color:rgba(0,0,0,0.4); font-size:12px; padding:12px 0;">No downloads recorded on this browser yet.</div>`;
+            adminPanel.classList.add("active");
+          }
+
+          function closeAdminPanel() {
+            adminPanel.classList.remove("active");
+          }
+
+          if (adminCloseBtn) adminCloseBtn.addEventListener("click", closeAdminPanel);
+          if (adminCloseBtn2) adminCloseBtn2.addEventListener("click", closeAdminPanel);
+          
+          if (adminClearBtn) {
+            adminClearBtn.addEventListener("click", () => {
+              if (confirm("Are you sure you want to reset all local pageviews and download statistics?")) {
+                allPets.forEach(pet => localStorage.removeItem(`dl_${pet.slug}`));
+                localStorage.setItem("page_views", "1");
+                closeAdminPanel();
+                location.reload();
+              }
+            });
+          }
+
+          // Show panel if ?admin=true is in URL
+          if (new URLSearchParams(window.location.search).get("admin") === "true") {
+            setTimeout(openAdminPanel, 500);
+          }
+
+          // Secret double-click trigger on the footer logo
+          const footerLogo = document.querySelector(".footer .logo");
+          if (footerLogo) {
+            footerLogo.addEventListener("dblclick", (e) => {
+              e.preventDefault();
+              openAdminPanel();
+            });
+            footerLogo.title = "Double-click to open local Admin Dashboard";
+          }
         } catch (e) {
           console.error(e);
           galleryEl.innerHTML = `<div class="empty">Could not load catalog.</div>`;
         }
       })();
     </script>
+
+    <!-- Admin Dashboard Panel -->
+    <div id="adminPanel" class="admin-panel">
+      <div class="admin-card">
+        <div class="admin-header">
+          <div class="admin-title">cod.pet Dashboard</div>
+          <div id="adminCloseBtn" class="admin-close">&times;</div>
+        </div>
+        <div class="admin-body">
+          <div class="admin-stat-grid">
+            <div class="admin-stat-card">
+              <div id="statPageviews" class="admin-stat-val">0</div>
+              <div class="admin-stat-lbl">Pageviews (Local)</div>
+            </div>
+            <div class="admin-stat-card">
+              <div id="statDownloads" class="admin-stat-val">0</div>
+              <div class="admin-stat-lbl">Downloads (Local)</div>
+            </div>
+          </div>
+          
+          <div>
+            <div class="admin-section-title">Downloads by Pet (This Device)</div>
+            <div id="adminDownloadsList" class="admin-list">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+          
+          <div class="admin-info-card">
+            <strong>🌐 How to View Global Stats?</strong><br>
+            Because this is a static site hosted on GitHub Pages, global metrics are tracked via exterior integrations:<br>
+            • <strong>Pageviews & Clones:</strong> Check your GitHub repository -> <strong>Insights -> Traffic</strong> tab.<br>
+            • <strong>Analytics Panel:</strong> We can easily connect <strong>Google Analytics (GA4)</strong> or <strong>Microsoft Clarity</strong>.
+          </div>
+          
+          <div class="admin-actions">
+            <button id="adminClearBtn" class="admin-btn admin-btn-sec">Reset Local Stats</button>
+            <button id="adminCloseBtn2" class="admin-btn">Close Panel</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
