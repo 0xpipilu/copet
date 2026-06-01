@@ -72,11 +72,21 @@ def main():
                 cropped.save(output_path, "PNG", optimize=True)
                 print(f"Created base.png for {slug}")
                 
-                # Generate animated.svg for GitHub README hover animation
-                # We use absolute URL for raw.githubusercontent.com to bypass GitHub Camo proxy restrictions on relative links inside SVGs.
-                raw_url = f"https://raw.githubusercontent.com/0xpipilu/codpet/main/pets/{slug}/spritesheet.webp"
-                total_idle_width = fw * 6
-                svg_content = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {fw} {fh}" width="100%" height="100%">
+                # Generate 50% resized idle strip for ultra-lightweight embedded base64 animation
+                # NEAREST resampling preserves crisp pixel-art edges perfectly!
+                rw = 96
+                rh = 104
+                resized_strip = cropped.resize((rw * 6, rh), Image.Resampling.NEAREST)
+                
+                # Compress highly using WebP quality 90 to keep it extremely small (~30KB)
+                import base64
+                from io import BytesIO
+                buf = BytesIO()
+                resized_strip.save(buf, format="WEBP", quality=90)
+                b64_data = base64.b64encode(buf.getvalue()).decode("utf-8")
+                
+                total_idle_width = rw * 6
+                svg_content = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {rw} {rh}" width="100%" height="100%">
   <defs>
     <style>
       .sprite {{
@@ -97,17 +107,17 @@ def main():
       }}
     </style>
   </defs>
-  <g width="{fw}" height="{fh}" clip-path="url(#clip)">
+  <g width="{rw}" height="{rh}" clip-path="url(#clip)">
     <clipPath id="clip">
-      <rect width="{fw}" height="{fh}" />
+      <rect width="{rw}" height="{rh}" />
     </clipPath>
-    <image class="sprite" href="{raw_url}" width="{atlas.get('sheetWidth', 1536)}" height="{atlas.get('sheetHeight', 1872)}" />
+    <image class="sprite" href="data:image/webp;base64,{b64_data}" width="{total_idle_width}" height="{rh}" />
   </g>
 </svg>
 """
                 svg_path = folder_path / "animated.svg"
                 svg_path.write_text(svg_content.strip() + "\n", encoding="utf-8")
-                print(f"Created animated.svg for {slug}")
+                print(f"Created self-contained animated.svg for {slug}")
         except Exception as e:
             print(f"Error processing {slug}: {e}")
 
