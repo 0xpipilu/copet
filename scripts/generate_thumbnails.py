@@ -52,6 +52,16 @@ def main():
                 
                 cropped = img.crop((left, top, right, bottom))
                 
+                # Automatically convert fuchsia/magenta (#FF00FF) background to transparent
+                datas = cropped.getdata()
+                newData = []
+                for item in datas:
+                    if item[0] > 230 and item[1] < 40 and item[2] > 230:
+                        newData.append((0, 0, 0, 0))
+                    else:
+                        newData.append(item)
+                cropped.putdata(newData)
+                
                 # Resize thumbnail slightly to make README files load faster
                 # (GitHub README renders them at around 80-100px width anyway)
                 # Let's keep them high-res but reasonable size (e.g. max width 96px)

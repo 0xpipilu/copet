@@ -251,7 +251,7 @@
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <script src="./catalog.js"></script>
+    <script src="./catalog.js?v=20260601"></script>
     <script>
       const galleryEl = document.getElementById("gallery");
       let allPets = [];
@@ -444,9 +444,9 @@
         try {
           const catalog = typeof window.__CODEX_PETS__ === "object" && window.__CODEX_PETS__
             ? window.__CODEX_PETS__
-            : await fetch("./index.json").then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
+            : await fetch("./index.json?v=20260601").then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
 
-          allPets = (catalog.pets || []).sort((a, b) => a.displayName.localeCompare(b.displayName));
+          allPets = catalog.pets || [];
           renderGallery();
         } catch (e) {
           console.error(e);
