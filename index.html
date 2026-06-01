@@ -829,6 +829,7 @@ Move your extracted pet folder directly into the Codex local pets folder (no cli
           if (res.ok) {
             const data = await res.json();
             window.globalStats.pageviews = data.value || 0;
+            if (typeof window.updateAdminPanelData === "function") window.updateAdminPanelData();
           }
         } catch (e) {
           console.error("Failed to fetch global pageviews:", e);
@@ -847,6 +848,7 @@ Move your extracted pet folder directly into the Codex local pets folder (no cli
               if (btn) {
                 btn.innerHTML = DL_ICON + " Download (" + (data.value || 0) + ")";
               }
+              if (typeof window.updateAdminPanelData === "function") window.updateAdminPanelData();
             }
           } catch (e) {
             console.error(`Failed to load global downloads for ${pet.slug}:`, e);
@@ -880,7 +882,8 @@ Move your extracted pet folder directly into the Codex local pets folder (no cli
           const statDownloads = document.getElementById("statDownloads");
           const adminDownloadsList = document.getElementById("adminDownloadsList");
 
-          function openAdminPanel() {
+          function updateAdminPanelData() {
+            if (!statPageviews) return;
             statPageviews.textContent = localStorage.getItem("page_views") || "1";
             
             // Set global pageviews
@@ -918,6 +921,12 @@ Move your extracted pet folder directly into the Codex local pets folder (no cli
             }
             
             adminDownloadsList.innerHTML = listHtml || `<div style="text-align:center; color:rgba(0,0,0,0.4); font-size:12px; padding:12px 0;">No downloads recorded yet.</div>`;
+          }
+
+          window.updateAdminPanelData = updateAdminPanelData;
+
+          function openAdminPanel() {
+            updateAdminPanelData();
             adminPanel.classList.add("active");
           }
 
