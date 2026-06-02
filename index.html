@@ -9,6 +9,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <script>
+      (function() {
+        // Prevent FOUT (Flash of Unstyled Text / 宋体闪烁) by hiding elements until web font is ready
+        if (typeof document.fonts === "object" && typeof document.fonts.load === "function") {
+          document.fonts.load("1em 'Nanum Pen Script'").then(function() {
+            document.documentElement.classList.add("fonts-loaded");
+          }).catch(function() {
+            document.documentElement.classList.add("fonts-loaded");
+          });
+          // Fallback timer: force show after 1 second if loading is delayed to prevent blank screens
+          setTimeout(function() {
+            document.documentElement.classList.add("fonts-loaded");
+          }, 1000);
+        } else {
+          document.documentElement.classList.add("fonts-loaded");
+        }
+      })();
+    </script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RT5ZG7801R"></script>
@@ -75,6 +93,20 @@
         font-size: 14px;
         line-height: 1.5;
         -webkit-font-smoothing: antialiased;
+      }
+
+      /* Prevent FOUT (Flash of Unstyled Text / 宋体闪烁) on logo and handwritten elements */
+      .logo,
+      .defrost-logo,
+      .social-links {
+        opacity: 0;
+      }
+
+      .fonts-loaded .logo,
+      .fonts-loaded .defrost-logo,
+      .fonts-loaded .social-links {
+        opacity: 1;
+        transition: opacity 250ms ease;
       }
 
       button, input { font: inherit; }
