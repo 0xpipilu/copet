@@ -249,8 +249,9 @@
       .sprite-player {
         flex: none;
         background-repeat: no-repeat;
-        background-position: 0 0;
-        image-rendering: auto;
+        background-position: center;
+        image-rendering: pixelated;
+        image-rendering: crisp-edges;
         filter: grayscale(100%);
         opacity: 0.8;
         transition: filter 250ms ease, opacity 250ms ease;
@@ -610,13 +611,32 @@
       }
 
       /* ---- Sprite engine ---- */
-      function loadSprite(el) {
+      function loadSprite(el, callback) {
+        if (el._loaded) {
+          if (callback) callback();
+          return;
+        }
+        const a = el._atlas;
+        const img = new Image();
+        img.src = a.src;
+        img.onload = () => {
+          el.style.width  = a.fw * a.s + "px";
+          el.style.height = a.fh * a.s + "px";
+          el.style.backgroundImage = `url("${encodeURI(a.src)}")`;
+          el.style.backgroundSize  = a.sw * a.s + "px " + a.sh * a.s + "px";
+          el._loaded = true;
+          if (callback) callback();
+        };
+      }
+
+      function showStaticPreview(el) {
         const a = el._atlas;
         el.style.width  = a.fw * a.s + "px";
         el.style.height = a.fh * a.s + "px";
-        el.style.backgroundImage = `url("${encodeURI(a.src)}")`;
-        el.style.backgroundSize  = a.sw * a.s + "px " + a.sh * a.s + "px";
-        el._loaded = true;
+        el.style.backgroundImage = `url("${encodeURI(a.svg)}")`;
+        el.style.backgroundSize  = "contain";
+        el.style.backgroundPosition = "center";
+        el.style.backgroundRepeat = "no-repeat";
       }
 
       function showFrame(el, rowIndex, frameIndex) {
@@ -631,12 +651,6 @@
         const el = tile._sprite;
         const pet = getPet(tile.dataset.slug);
         if (!el || !pet) return;
-
-        /* Make sure image is loaded */
-        if (!el._loaded) {
-          loadSprite(el);
-          showFrame(el, el._atlas.defaultRow, 0);
-        }
 
         const rows = getRows(pet);
         if (!rows.length) return;
@@ -660,14 +674,21 @@
           showFrame(el, row.rowIndex, fi);
           tile._anim = requestAnimationFrame(tick);
         }
-        tile._anim = requestAnimationFrame(tick);
+
+        loadSprite(el, () => {
+          if (!tile._isHovered) {
+            showStaticPreview(el);
+            return;
+          }
+          tile._anim = requestAnimationFrame(tick);
+        });
       }
 
       function stopHover(tile) {
         if (tile._anim) { cancelAnimationFrame(tile._anim); tile._anim = null; }
         const el = tile._sprite;
-        if (el && el._loaded) {
-          showFrame(el, el._atlas.defaultRow, 0);
+        if (el) {
+          showStaticPreview(el);
         }
       }
 
@@ -839,6 +860,7 @@ Move your extracted pet folder directly into the Codex local pets folder (no cli
           /* Store atlas info directly on the element */
           el._atlas = {
             src: pet.spritesheetFile,
+            svg: `pets/${pet.slug}/animated.svg`,
             fw: a.frameWidth, fh: a.frameHeight,
             sw: a.sheetWidth, sh: a.sheetHeight,
             s: 0.38,
@@ -846,20 +868,22 @@ Move your extracted pet folder directly into the Codex local pets folder (no cli
           };
           el._loaded = false;
 
-          /* Set dimensions immediately to reserve layout space */
-          el.style.width  = a.frameWidth * 0.38 + "px";
-          el.style.height = a.frameHeight * 0.38 + "px";
+          /* Set static preview immediately (loads lightweight animated.svg) */
+          showStaticPreview(el);
 
           /* Cache sprite ref on tile */
           tile._sprite = el;
-
-          /* Load sprite and first frame immediately */
-          loadSprite(el);
-          showFrame(el, row0.rowIndex, 0);
+          tile._isHovered = false;
 
           /* Hover handlers */
-          tile.addEventListener("mouseenter", () => startHover(tile));
-          tile.addEventListener("mouseleave", () => stopHover(tile));
+          tile.addEventListener("mouseenter", () => {
+            tile._isHovered = true;
+            startHover(tile);
+          });
+          tile.addEventListener("mouseleave", () => {
+            tile._isHovered = false;
+            stopHover(tile);
+          });
         });
 
         /* Download handlers */
