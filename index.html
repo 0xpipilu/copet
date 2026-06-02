@@ -1068,6 +1068,22 @@
 
         // Always set the loading class to trigger the elegant rising steam particles!
         tile.classList.add("loading");
+
+        // Dynamically inject the 5 wispy steam particles to keep the initial DOM tree light and clean
+        let steamContainer = tile.querySelector(".steam-container");
+        if (!steamContainer) {
+          const stage = tile.querySelector(".tile-stage");
+          if (stage) {
+            steamContainer = document.createElement("div");
+            steamContainer.className = "steam-container";
+            for (let i = 1; i <= 5; i++) {
+              const puff = document.createElement("div");
+              puff.className = `steam-puff steam-${i}`;
+              steamContainer.appendChild(puff);
+            }
+            stage.appendChild(steamContainer);
+          }
+        }
         
         const colorEl = tile._spriteStaticColor;
         if (colorEl) {
@@ -1119,6 +1135,8 @@
 
             // Hide the steam container and update active rendering states
             tile.classList.remove("loading");
+            const activeSteam = tile.querySelector(".steam-container");
+            if (activeSteam) activeSteam.remove();
             
             // Double check hover state before starting the loop
             if (!tile._isHovered) {
@@ -1145,6 +1163,11 @@
         tile._hoverSession = 0; // Invalidate any running session instantly
         tile.classList.remove("loading");
         tile.classList.remove("playing");
+        
+        // Remove steam elements from the DOM tree completely
+        const activeSteam = tile.querySelector(".steam-container");
+        if (activeSteam) activeSteam.remove();
+
         if (tile._anim) {
           cancelAnimationFrame(tile._anim);
           tile._anim = null;
@@ -1305,14 +1328,7 @@ Move your extracted pet folder directly into the Codex local pets folder (no cli
           return `
             <div class="tile" data-slug="${pet.slug}">
               <div class="tile-stage">
-                <!-- Evaporating Defrost Steam -->
-                <div class="steam-container">
-                  <div class="steam-puff steam-1"></div>
-                  <div class="steam-puff steam-2"></div>
-                  <div class="steam-puff steam-3"></div>
-                  <div class="steam-puff steam-4"></div>
-                  <div class="steam-puff steam-5"></div>
-                </div>
+                <!-- Evaporating Defrost Steam is dynamically injected on hover to minimize DOM size -->
                 <img class="sprite-static sprite-static-gray" loading="lazy" data-pet-slug="${pet.slug}" alt="${esc(pet.displayName)} preview">
                 <img class="sprite-static sprite-static-color" loading="lazy" data-pet-slug="${pet.slug}" alt="${esc(pet.displayName)} preview colored">
                 <div class="sprite-player" data-pet-slug="${pet.slug}"></div>
