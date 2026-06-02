@@ -27,10 +27,30 @@ def sync_pets():
 
     TARGET_PETS_DIR.mkdir(parents=True, exist_ok=True)
     
+    # 1. Detect and remove deleted pets from target
+    source_pet_names = set()
+    if SOURCE_PETS_DIR.exists():
+        for item in SOURCE_PETS_DIR.iterdir():
+            if item.is_dir() and (item / "pet.json").exists():
+                source_pet_names.add(item.name)
+
+    target_pet_names = set()
+    for item in TARGET_PETS_DIR.iterdir():
+        if item.is_dir():
+            target_pet_names.add(item.name)
+
+    deleted_pets = sorted(list(target_pet_names - source_pet_names))
+    
+    # Actually delete the folders
+    for pet_name in deleted_pets:
+        target_pet_dir = TARGET_PETS_DIR / pet_name
+        print(f"🗑️ Found deleted pet locally: {pet_name}, removing from target...")
+        shutil.rmtree(target_pet_dir, ignore_errors=True)
+
     synced_pets = []
     updated_pets = []
     
-    # Iterate through all subdirectories in the source directory
+    # 2. Iterate through all subdirectories in the source directory to add/update
     for item in sorted(SOURCE_PETS_DIR.iterdir()):
         if not item.is_dir():
             continue
@@ -66,13 +86,13 @@ def sync_pets():
                 shutil.copytree(item, target_pet_dir, dirs_exist_ok=True)
                 updated_pets.append(pet_name)
 
-    total_changes = len(synced_pets) + len(updated_pets)
+    total_changes = len(synced_pets) + len(updated_pets) + len(deleted_pets)
     
     if total_changes == 0:
         print("✅ All pets are already fully in sync!")
         return
         
-    print(f"\nSuccessfully copied {len(synced_pets)} new pets and updated {len(updated_pets)} existing pets.")
+    print(f"\nSuccessfully synced: {len(synced_pets)} new, {len(updated_pets)} updated, {len(deleted_pets)} deleted.")
     
     # Rebuild Index, generate optimized thumbnails, and README
     print("\n🛠️ Rebuilding index, thumbnails, and README...")
@@ -83,14 +103,20 @@ def sync_pets():
     # Auto git commit & push (Optimized safe one-click deployment)
     print("\n🚀 Pushing changes to GitHub and deploying to live site...")
     
-    # Safe Git Add: Only stage synced pet folders and generated files (avoids staging unrelated index.html edits!)
-    run_cmd(["git", "add", "pets/", "index.json", "catalog.js", "README.md"], cwd=WORKSPACE_ROOT)
+    # Safe Git Add: stage deletions (-A stages removed folders/files too)
+    run_cmd(["git", "add", "-A", "pets/", "index.json", "catalog.js", "README.md"], cwd=WORKSPACE_ROOT)
     
     commit_msg = "Feat: auto-sync pets from .codex"
+    details = []
     if synced_pets:
-        commit_msg += f" (added: {', '.join(synced_pets)})"
+        details.append(f"added: {', '.join(synced_pets)}")
     if updated_pets:
-        commit_msg += f" (updated: {', '.join(updated_pets)})"
+        details.append(f"updated: {', '.join(updated_pets)}")
+    if deleted_pets:
+        details.append(f"deleted: {', '.join(deleted_pets)}")
+        
+    if details:
+        commit_msg += f" ({'; '.join(details)})"
         
     run_cmd(["git", "commit", "-m", commit_msg], cwd=WORKSPACE_ROOT)
     run_cmd(["git", "push", "origin", "main"], cwd=WORKSPACE_ROOT)
