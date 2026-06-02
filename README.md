@@ -114,7 +114,7 @@ python3 scripts/generate_favicon.py
 
 ## Pets Gallery / 宠物画廊
 
-Here is a visual list of all the **93** interactive pixel pets available in Codpet:
+Here is a visual list of all the **92** interactive pixel pets available in Codpet:
 
 <table align="center">
   <tr>
@@ -231,16 +231,16 @@ Here is a visual list of all the **93** interactive pixel pets available in Codp
   </tr>
   <tr>
     <td align="center" valign="middle" width="160" height="160"><img src="pets/machi-dog/animated.svg?v=20260601c" width="96" alt="Machi Dog" /></td>
-    <td align="center" valign="middle" width="160" height="160"><img src="pets/tin-terrier/animated.svg?v=20260601c" width="96" alt="Tin Terrier" /></td>
     <td align="center" valign="middle" width="160" height="160"><img src="pets/brass-reed/animated.svg?v=20260601c" width="96" alt="Brass Reed" /></td>
     <td align="center" valign="middle" width="160" height="160"><img src="pets/the-drummer/animated.svg?v=20260601c" width="96" alt="The Drummer" /></td>
     <td align="center" valign="middle" width="160" height="160"><img src="pets/smoking-robot/animated.svg?v=20260601c" width="96" alt="Smoking Robot" /></td>
     <td align="center" valign="middle" width="160" height="160"><img src="pets/fat-robot/animated.svg?v=20260601c" width="96" alt="Fat Robot" /></td>
+    <td align="center" valign="middle" width="160" height="160"><img src="pets/machi-owl/animated.svg?v=20260601c" width="96" alt="Machi Owl" /></td>
   </tr>
   <tr>
-    <td align="center" valign="middle" width="160" height="160"><img src="pets/machi-owl/animated.svg?v=20260601c" width="96" alt="Machi Owl" /></td>
     <td align="center" valign="middle" width="160" height="160"><img src="pets/dog-creak/animated.svg?v=20260601c" width="96" alt="Dog Creak" /></td>
     <td align="center" valign="middle" width="160" height="160"><img src="pets/josef-bot/animated.svg?v=20260601c" width="96" alt="Josef Bot" /></td>
+    <td align="center" valign="middle" width="160" height="160">&nbsp;</td>
     <td align="center" valign="middle" width="160" height="160">&nbsp;</td>
     <td align="center" valign="middle" width="160" height="160">&nbsp;</td>
     <td align="center" valign="middle" width="160" height="160">&nbsp;</td>
