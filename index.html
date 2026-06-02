@@ -297,7 +297,20 @@
         opacity: 1;
         z-index: 3;
         clip-path: inset(100% 0 0 0); /* Clipped out completely by default */
-        transition: clip-path 120ms linear; /* Smooth linear rising transition */
+      }
+
+      /* Defrosting Clip-Path Rise Animation */
+      @keyframes defrost-rise {
+        0% {
+          clip-path: inset(100% 0 0 0);
+        }
+        100% {
+          clip-path: inset(0% 0 0 0);
+        }
+      }
+
+      .tile.loading .sprite-static-color {
+        animation: defrost-rise 450ms cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
       }
 
       .sprite-player {
@@ -1033,19 +1046,15 @@
           tile._anim = requestAnimationFrame(tick);
         }
 
-        // Always set the loading class to trigger the elegant rising steam particles!
+        // Always set the loading class to trigger the elegant rising steam particles and CSS defrost-rise animation!
         tile.classList.add("loading");
         
         const colorEl = tile._spriteStaticColor;
         if (colorEl) {
-          // Force layout reflow to ensure the 100% starting point is registered
-          colorEl.style.transition = "none";
-          colorEl.style.clipPath = "inset(100% 0 0 0)";
-          colorEl.getBoundingClientRect(); // trigger reflow
-          
-          // Apply a smooth 450ms CSS clip-path transition for the color defrosting
-          colorEl.style.transition = "clip-path 450ms cubic-bezier(0.25, 0.8, 0.25, 1)";
-          colorEl.style.clipPath = "inset(0% 0 0 0)";
+          // Clear any inline styles to let the pristine stylesheet CSS animation run flawlessly
+          colorEl.style.animation = "";
+          colorEl.style.transition = "";
+          colorEl.style.clipPath = "";
         }
 
         const hoverStartTime = Date.now();
@@ -1062,6 +1071,7 @@
             if (timeElapsed > minDefrostDuration) {
               if (!tile._isHovered) return;
               if (colorEl) {
+                colorEl.style.animation = "none"; // Disable CSS animation to take manual control
                 colorEl.style.transition = "none";
                 const insetTop = 100 - pct;
                 colorEl.style.clipPath = `inset(${insetTop}% 0 0 0)`;
@@ -1084,8 +1094,9 @@
             if (!tile._isHovered) {
               tile.classList.remove("playing");
               if (colorEl) {
-                colorEl.style.transition = "none";
-                colorEl.style.clipPath = "inset(100% 0 0 0)";
+                colorEl.style.animation = "";
+                colorEl.style.transition = "";
+                colorEl.style.clipPath = "";
               }
               return;
             }
@@ -1110,9 +1121,10 @@
         }
         const colorEl = tile._spriteStaticColor;
         if (colorEl) {
-          // Snap back to grayscale instantly on leave
-          colorEl.style.transition = "none";
-          colorEl.style.clipPath = "inset(100% 0 0 0)";
+          // Snap back to grayscale instantly on leave by clearing inline styles to default CSS
+          colorEl.style.animation = "";
+          colorEl.style.transition = "";
+          colorEl.style.clipPath = "";
         }
       }
 
