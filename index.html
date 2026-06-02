@@ -216,18 +216,14 @@
         display: none;
         align-items: center;
         justify-content: center;
-        gap: 4px;
+        width: 24px;
         height: 24px;
-        padding: 0 10px;
         border: 1px solid var(--border);
-        border-radius: 999px;
+        border-radius: 50%;
         background: #fff;
-        font-size: 10px;
-        font-weight: 500;
         color: var(--secondary);
         cursor: pointer;
-        transition: border-color 80ms, color 80ms;
-        white-space: nowrap;
+        transition: border-color 80ms, color 80ms, background 80ms;
       }
 
       .tile-dl:hover {
@@ -1055,7 +1051,7 @@ Move your extracted pet folder directly into the Codex local pets folder (no cli
         }
 
         btn.classList.remove("busy");
-        btn.innerHTML = DL_ICON + " Download";
+        btn.innerHTML = DL_ICON;
       }
 
       /* ---- Render ---- */
@@ -1076,8 +1072,8 @@ Move your extracted pet folder directly into the Codex local pets folder (no cli
               </div>
               <div class="tile-label">
                 <div class="tile-name">${esc(pet.displayName)}</div>
-                <button type="button" class="tile-dl" data-slug="${pet.slug}">
-                  ${DL_ICON} Download
+                <button type="button" class="tile-dl" data-slug="${pet.slug}" aria-label="Download ${esc(pet.displayName)}">
+                  ${DL_ICON}
                 </button>
               </div>
             </div>`;
