@@ -2,10 +2,6 @@
   <defs>
     <style>
       .sprite {
-        image-rendering: -moz-crisp-edges;
-        image-rendering: -webkit-crisp-edges;
-        image-rendering: pixelated;
-        image-rendering: crisp-edges;
         animation: play-idle 1.1s steps(6) infinite;
       }
       @keyframes play-idle {

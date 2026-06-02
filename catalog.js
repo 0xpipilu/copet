@@ -1,6 +1,232 @@
 window.__CODEX_PETS__ = {
-  "count": 90,
+  "count": 92,
   "pets": [
+    {
+      "slug": "rex",
+      "folder": "pets/rex",
+      "id": "rex",
+      "displayName": "Rex",
+      "description": "A sly long-snouted mechanical wolf riding a worn red vintage motorcycle.",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/rex/pet.json",
+      "spritesheetFile": "pets/rex/spritesheet.webp",
+      "stateNames": [
+        "active",
+        "brake_support",
+        "curious",
+        "happy",
+        "hop",
+        "idle",
+        "sleep",
+        "walk"
+      ],
+      "stateCount": 8,
+      "atlas": {
+        "columns": 8,
+        "rows": 9,
+        "frameWidth": 192,
+        "frameHeight": 208,
+        "sheetWidth": 1536,
+        "sheetHeight": 1872
+      },
+      "previewRows": [
+        {
+          "key": "idle",
+          "label": "Idle",
+          "rowIndex": 0,
+          "frames": 6,
+          "durationMs": 1100,
+          "semantic": "idle",
+          "notes": "Low-distraction bike idle with tiny eye shifts, slight chest bob, and ready-to-go posture."
+        },
+        {
+          "key": "running-right",
+          "label": "Run Right",
+          "rowIndex": 1,
+          "frames": 8,
+          "durationMs": 980,
+          "semantic": "ride-right",
+          "notes": ""
+        },
+        {
+          "key": "running-left",
+          "label": "Run Left",
+          "rowIndex": 2,
+          "frames": 8,
+          "durationMs": 980,
+          "semantic": "ride-left",
+          "notes": ""
+        },
+        {
+          "key": "waving",
+          "label": "Waving",
+          "rowIndex": 3,
+          "frames": 4,
+          "durationMs": 840,
+          "semantic": "happy",
+          "notes": "Smug pleased loop with a tiny throttle flourish instead of a literal wave."
+        },
+        {
+          "key": "jumping",
+          "label": "Jumping",
+          "rowIndex": 4,
+          "frames": 5,
+          "durationMs": 900,
+          "semantic": "wheelie",
+          "notes": ""
+        },
+        {
+          "key": "failed",
+          "label": "Failed",
+          "rowIndex": 5,
+          "frames": 8,
+          "durationMs": 1120,
+          "semantic": "brake-support",
+          "notes": ""
+        },
+        {
+          "key": "waiting",
+          "label": "Waiting",
+          "rowIndex": 6,
+          "frames": 6,
+          "durationMs": 1260,
+          "semantic": "sleep",
+          "notes": "Drowsy roadside rest with drooping eyelids and a relaxed lean onto the handlebars."
+        },
+        {
+          "key": "running",
+          "label": "Running",
+          "rowIndex": 7,
+          "frames": 6,
+          "durationMs": 960,
+          "semantic": "rev-coast",
+          "notes": ""
+        },
+        {
+          "key": "review",
+          "label": "Review",
+          "rowIndex": 8,
+          "frames": 6,
+          "durationMs": 1080,
+          "semantic": "curious",
+          "notes": "Alert scanning look while staying seated on the motorcycle and holding the bars."
+        }
+      ],
+      "defaultPreviewRow": "idle"
+    },
+    {
+      "slug": "mack",
+      "folder": "pets/mack",
+      "id": "mack",
+      "displayName": "Mack",
+      "description": "A faithful Codex pet version of the McWOLF mechanical wolf: tall top hat, extra-long snout with black round nose, half-lidded sly eyes, backward wing-like ears, cream and charcoal horizontal striped metal body, thin limbs, glove-like hands, and round shoes.",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/mack/pet.json",
+      "spritesheetFile": "pets/mack/spritesheet.webp",
+      "stateNames": [
+        "curious",
+        "happy",
+        "idle",
+        "lamp_pose",
+        "point",
+        "sleep",
+        "stroll",
+        "walk"
+      ],
+      "stateCount": 8,
+      "atlas": {
+        "columns": 8,
+        "rows": 9,
+        "frameWidth": 192,
+        "frameHeight": 208,
+        "sheetWidth": 1536,
+        "sheetHeight": 1872
+      },
+      "previewRows": [
+        {
+          "key": "idle",
+          "label": "Idle",
+          "rowIndex": 0,
+          "frames": 6,
+          "durationMs": 1100,
+          "semantic": "idle",
+          "notes": "Calm in-place baseline with tiny blink, tiny hat bob, and sly half-lidded expression preserved."
+        },
+        {
+          "key": "running-right",
+          "label": "Run Right",
+          "rowIndex": 1,
+          "frames": 8,
+          "durationMs": 980,
+          "semantic": "walk-right",
+          "notes": ""
+        },
+        {
+          "key": "running-left",
+          "label": "Run Left",
+          "rowIndex": 2,
+          "frames": 8,
+          "durationMs": 980,
+          "semantic": "walk-left",
+          "notes": ""
+        },
+        {
+          "key": "waving",
+          "label": "Waving",
+          "rowIndex": 3,
+          "frames": 4,
+          "durationMs": 840,
+          "semantic": "happy",
+          "notes": "Restrained pleased and smug gesture row, intentionally mapped to the waving atlas slot."
+        },
+        {
+          "key": "jumping",
+          "label": "Jumping",
+          "rowIndex": 4,
+          "frames": 5,
+          "durationMs": 900,
+          "semantic": "point",
+          "notes": "Spare atlas row repurposed as Mack's upward pointing finger gesture."
+        },
+        {
+          "key": "failed",
+          "label": "Failed",
+          "rowIndex": 5,
+          "frames": 8,
+          "durationMs": 1120,
+          "semantic": "lamp-pose",
+          "notes": ""
+        },
+        {
+          "key": "waiting",
+          "label": "Waiting",
+          "rowIndex": 6,
+          "frames": 6,
+          "durationMs": 1260,
+          "semantic": "sleep",
+          "notes": "Standing doze with drooped lids and slight sleepy nod."
+        },
+        {
+          "key": "running",
+          "label": "Running",
+          "rowIndex": 7,
+          "frames": 6,
+          "durationMs": 960,
+          "semantic": "stroll",
+          "notes": "Spare atlas row used for a relaxed theatrical saunter variant."
+        },
+        {
+          "key": "review",
+          "label": "Review",
+          "rowIndex": 8,
+          "frames": 6,
+          "durationMs": 1080,
+          "semantic": "curious",
+          "notes": "Small thoughtful lean and chin-touch gestures without breaking Mack's relaxed mechanical-wolf identity."
+        }
+      ],
+      "defaultPreviewRow": "idle"
+    },
     {
       "slug": "moro",
       "folder": "pets/moro",
