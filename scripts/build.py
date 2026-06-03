@@ -44,9 +44,9 @@ def main():
     print("=== Starting build.py ===")
     
     # Paths
-    dev_html_path = "index.dev.html"
-    css_path = "style.css"
-    js_path = "app.js"
+    dev_html_path = "src/index.html"
+    css_path = "src/style.css"
+    js_path = "src/app.js"
     prod_html_path = "index.html"
 
     # Verify files exist
@@ -113,7 +113,7 @@ def main():
         html = html.replace(style_placeholder, f"<style>{min_css}</style>")
         print("  - Inline style.css injected successfully.")
     else:
-        print("  - Warning: Could not find style.css link placeholder in index.dev.html!")
+        print("  - Warning: Could not find style.css link placeholder in src/index.html!")
 
     # Replace local script link
     script_placeholder = '<script src="app.js"></script>'
@@ -121,7 +121,7 @@ def main():
         html = html.replace(script_placeholder, f"<script>{min_js}</script>")
         print("  - Inline app.js injected successfully.")
     else:
-        print("  - Warning: Could not find app.js script placeholder in index.dev.html!")
+        print("  - Warning: Could not find app.js script placeholder in src/index.html!")
 
     # Write output to index.html
     with open(prod_html_path, "w", encoding="utf-8") as f:
