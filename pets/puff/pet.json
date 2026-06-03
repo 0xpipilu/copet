@@ -1,0 +1,98 @@
+{
+  "id": "puff",
+  "displayName": "Puff",
+  "description": "A faithful Codex pet recreation of the provided mecha kitty reference: a round cream-and-black mechanical guardian cat with a thick warm-white fluffy neck ruff, a round brass side hatch, a black head patch, a black body patch, and a short thick tail with a dark tip. Quiet, gentle, reliable, and slightly dopey in a protective way.",
+  "spritesheetPath": "spritesheet.webp",
+  "atlas": {
+    "columns": 8,
+    "rows": 9,
+    "cellWidth": 192,
+    "cellHeight": 208
+  },
+  "atlasRowSemantics": {
+    "0": "idle",
+    "1": "walk_right",
+    "2": "walk_left",
+    "3": "happy",
+    "4": "alert",
+    "5": "sleep",
+    "6": "loaf",
+    "7": "patrol",
+    "8": "curious"
+  },
+  "requestedActionMap": {
+    "idle": {
+      "rowState": "idle",
+      "row": 0,
+      "match": "exact"
+    },
+    "walk_right": {
+      "rowState": "running-right",
+      "row": 1,
+      "match": "mapped-standard-row"
+    },
+    "walk_left": {
+      "rowState": "running-left",
+      "row": 2,
+      "match": "mapped-standard-row"
+    },
+    "curious": {
+      "rowState": "review",
+      "row": 8,
+      "match": "mapped-standard-row"
+    },
+    "happy": {
+      "rowState": "waving",
+      "row": 3,
+      "match": "mapped-standard-row"
+    },
+    "sleep": {
+      "rowState": "failed",
+      "row": 5,
+      "match": "mapped-standard-row"
+    },
+    "drag": {
+      "leftRowState": "running-left",
+      "leftRow": 2,
+      "rightRowState": "running-right",
+      "rightRow": 1,
+      "match": "directional-row-mapping"
+    },
+    "patrol": {
+      "rowState": "running",
+      "row": 7,
+      "match": "mapped-standard-row"
+    },
+    "alert": {
+      "rowState": "jumping",
+      "row": 4,
+      "match": "mapped-standard-row"
+    },
+    "loaf": {
+      "rowState": "waiting",
+      "row": 6,
+      "match": "mapped-standard-row"
+    }
+  },
+  "unmappedRequestedActions": {
+    "play": "No dedicated row in the fixed 8x9 atlas. Priority was given to idle, walk_right, walk_left, curious, happy, sleep, drag, patrol, alert, and loaf."
+  },
+  "identityReadabilityChecklist": [
+    "small round head with a simple gentle face",
+    "tall round barrel body with thick proportions",
+    "cream and warm-ivory main body with black head and body patches",
+    "thick warm-white fluffy neck ruff remains visible at small size",
+    "round brass-and-warm-gray side hatch remains readable at small size",
+    "short thick tail with dark tip remains visible in both standing and curled poses"
+  ],
+  "dragFacingValidation": {
+    "validated": true,
+    "ruleLeft": "deltaX < 0 => facing left",
+    "ruleRight": "deltaX > 0 => facing right",
+    "leftFacingRowState": "running-left",
+    "leftFacingRow": 2,
+    "rightFacingRowState": "running-right",
+    "rightFacingRow": 1,
+    "manualReview": "Confirmed from final contact-sheet QA that row 2 is true left-facing and row 1 is true right-facing; the head, eyes, body angle, side hatch, body patch, tail curve, and stepping direction all align with the drag direction."
+  }
+}

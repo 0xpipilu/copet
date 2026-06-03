@@ -1,6 +1,110 @@
 window.__CODEX_PETS__ = {
-  "count": 92,
+  "count": 93,
   "pets": [
+    {
+      "slug": "puff",
+      "folder": "pets/puff",
+      "id": "puff",
+      "displayName": "Puff",
+      "description": "A faithful Codex pet recreation of the provided mecha kitty reference: a round cream-and-black mechanical guardian cat with a thick warm-white fluffy neck ruff, a round brass side hatch, a black head patch, a black body patch, and a short thick tail with a dark tip. Quiet, gentle, reliable, and slightly dopey in a protective way.",
+      "spritesheetPath": "spritesheet.webp",
+      "petJsonPath": "pets/puff/pet.json",
+      "spritesheetFile": "pets/puff/spritesheet.webp",
+      "stateNames": [],
+      "stateCount": 0,
+      "atlas": {
+        "columns": 8,
+        "rows": 9,
+        "frameWidth": 192,
+        "frameHeight": 208,
+        "sheetWidth": 1536,
+        "sheetHeight": 1872
+      },
+      "previewRows": [
+        {
+          "key": "idle",
+          "label": "Idle",
+          "rowIndex": 0,
+          "frames": 6,
+          "durationMs": 1100,
+          "semantic": null,
+          "notes": ""
+        },
+        {
+          "key": "running-right",
+          "label": "Run Right",
+          "rowIndex": 1,
+          "frames": 8,
+          "durationMs": 980,
+          "semantic": null,
+          "notes": ""
+        },
+        {
+          "key": "running-left",
+          "label": "Run Left",
+          "rowIndex": 2,
+          "frames": 8,
+          "durationMs": 980,
+          "semantic": null,
+          "notes": ""
+        },
+        {
+          "key": "waving",
+          "label": "Waving",
+          "rowIndex": 3,
+          "frames": 4,
+          "durationMs": 840,
+          "semantic": null,
+          "notes": ""
+        },
+        {
+          "key": "jumping",
+          "label": "Jumping",
+          "rowIndex": 4,
+          "frames": 5,
+          "durationMs": 900,
+          "semantic": null,
+          "notes": ""
+        },
+        {
+          "key": "failed",
+          "label": "Failed",
+          "rowIndex": 5,
+          "frames": 8,
+          "durationMs": 1120,
+          "semantic": null,
+          "notes": ""
+        },
+        {
+          "key": "waiting",
+          "label": "Waiting",
+          "rowIndex": 6,
+          "frames": 6,
+          "durationMs": 1260,
+          "semantic": null,
+          "notes": ""
+        },
+        {
+          "key": "running",
+          "label": "Running",
+          "rowIndex": 7,
+          "frames": 6,
+          "durationMs": 960,
+          "semantic": null,
+          "notes": ""
+        },
+        {
+          "key": "review",
+          "label": "Review",
+          "rowIndex": 8,
+          "frames": 6,
+          "durationMs": 1080,
+          "semantic": null,
+          "notes": ""
+        }
+      ],
+      "defaultPreviewRow": "idle"
+    },
     {
       "slug": "skiff",
       "folder": "pets/skiff",
