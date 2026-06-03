@@ -100,11 +100,15 @@ def sync_pets():
     run_cmd(["python3", "scripts/generate_thumbnails.py"], cwd=WORKSPACE_ROOT)
     run_cmd(["python3", "scripts/build_readme.py"], cwd=WORKSPACE_ROOT)
     
+    # Run build.py to inline optimized assets and updated catalog into index.html
+    print("🛠️ Compiling production index.html...")
+    run_cmd(["python3", "scripts/build.py"], cwd=WORKSPACE_ROOT)
+    
     # Auto git commit & push (Optimized safe one-click deployment)
     print("\n🚀 Pushing changes to GitHub and deploying to live site...")
     
     # Safe Git Add: stage deletions (-A stages removed folders/files too)
-    run_cmd(["git", "add", "-A", "pets/", "index.json", "catalog.js", "README.md"], cwd=WORKSPACE_ROOT)
+    run_cmd(["git", "add", "-A", "pets/", "index.json", "catalog.js", "README.md", "index.html"], cwd=WORKSPACE_ROOT)
     
     commit_msg = "Feat: auto-sync pets from .codex"
     details = []
