@@ -5,252 +5,84 @@ import Combine
 
 struct HybridContentView: View {
     @EnvironmentObject private var store: CodpetHybridStore
-    @State private var selectedTab: HybridTab? = .discover
+    @State private var isShowingSettings = false
     private let syncTimer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
     
     var body: some View {
-        NavigationSplitView {
-            List(selection: $selectedTab) {
-                ForEach(HybridTab.allCases) { tab in
-                    Label(tab.rawValue, systemImage: tab.iconName)
-                        .tag(tab)
+        VStack(spacing: 0) {
+            ZStack(alignment: .topTrailing) {
+                if let pageURL = store.webStoreURL(), let repoRoot = store.repoRoot {
+                    CodpetWebStoreView(pageURL: pageURL, readAccessRoot: repoRoot)
+                } else {
+                    ContentUnavailableView(
+                        "没有找到 cod.pet 仓库",
+                        systemImage: "folder.badge.questionmark",
+                        description: Text("请在设置中配置正确的仓库路径。")
+                    )
                 }
-            }
-            .navigationTitle("Codpet")
-        } detail: {
-            VStack(spacing: 0) {
-                HybridOverviewBar()
                 
+                // Top-right floating settings button
+                Button {
+                    isShowingSettings.toggle()
+                } label: {
+                    Image(systemName: "gearshape.fill")
+                        .font(.system(size: 14, weight: .medium))
+                        .foregroundColor(.primary.opacity(0.75))
+                        .padding(10)
+                        .background(.ultraThinMaterial)
+                        .clipShape(Circle())
+                        .shadow(color: Color.black.opacity(0.12), radius: 4, y: 2)
+                }
+                .buttonStyle(.plain)
+                .padding(16)
+                
+                // Bottom floating status toast
                 if let statusMessage = store.statusMessage, !statusMessage.isEmpty {
-                    HStack {
-                        Image(systemName: "circle.fill")
-                            .font(.system(size: 8))
-                            .foregroundColor(.green)
-                        Text(statusMessage)
-                            .font(.subheadline)
+                    VStack {
                         Spacer()
-                        Button("关闭") {
-                            store.statusMessage = nil
+                        HStack(spacing: 8) {
+                            Image(systemName: "info.circle.fill")
+                                .foregroundColor(.blue)
+                            Text(statusMessage)
+                                .font(.subheadline.weight(.medium))
+                            Button(action: {
+                                store.statusMessage = nil
+                            }) {
+                                Image(systemName: "xmark.circle.fill")
+                                    .foregroundColor(.secondary)
+                            }
+                            .buttonStyle(.plain)
+                            .padding(.leading, 6)
                         }
-                        .buttonStyle(.plain)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 10)
+                        .background(.ultraThinMaterial)
+                        .clipShape(Capsule())
+                        .shadow(color: Color.black.opacity(0.15), radius: 8, y: 4)
+                        .padding(.bottom, 24)
                     }
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 10)
-                    .background(Color(NSColor.controlBackgroundColor))
-                }
-                
-                switch selectedTab ?? .discover {
-                case .discover:
-                    DiscoverTabView()
-                case .installed:
-                    InstalledTabView()
-                case .settings:
-                    HybridSettingsView()
+                    .frame(maxWidth: .infinity)
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
                 }
             }
         }
         .frame(minWidth: 980, minHeight: 680)
+        .sheet(isPresented: $isShowingSettings) {
+            NavigationStack {
+                HybridSettingsView()
+                    .toolbar {
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button("完成") {
+                                isShowingSettings = false
+                            }
+                        }
+                    }
+            }
+            .frame(width: 500, height: 480)
+        }
         .onReceive(syncTimer) { _ in
             store.syncFromCodex()
         }
-    }
-}
-
-struct HybridOverviewBar: View {
-    @EnvironmentObject private var store: CodpetHybridStore
-    
-    var body: some View {
-        HStack(spacing: 18) {
-            Label("当前 Pet：\(store.activePetName)", systemImage: "sparkles")
-            Label("仓库 \(store.catalogCount) 只", systemImage: "square.grid.2x2")
-            Label("本地 \(store.installedCount) 只", systemImage: "pawprint.fill")
-            Spacer()
-            Button("同步 Codex 状态") {
-                store.syncFromCodex()
-            }
-            .buttonStyle(.bordered)
-        }
-        .font(.subheadline)
-        .padding(.horizontal, 18)
-        .padding(.vertical, 12)
-        .background(Color(NSColor.controlBackgroundColor))
-    }
-}
-
-struct DiscoverTabView: View {
-    @EnvironmentObject private var store: CodpetHybridStore
-    
-    var body: some View {
-        if let pageURL = store.webStoreURL(), let repoRoot = store.repoRoot {
-            ZStack(alignment: .topTrailing) {
-                CodpetWebStoreView(pageURL: pageURL, readAccessRoot: repoRoot)
-                
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Codpet 桌面桥接")
-                        .font(.headline)
-                    Text("浏览区保留 `cod.pet` 的原始体验；下载按钮已被接管为本地安装 / 应用。")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                    HStack(spacing: 8) {
-                        Button("打开本地 Pet 文件夹") {
-                            store.revealCodexPetsFolder()
-                        }
-                        .buttonStyle(.bordered)
-                        
-                        Button("导入本地 Pet") {
-                            store.importPetFromFolder()
-                        }
-                        .buttonStyle(.borderedProminent)
-                    }
-                }
-                .padding(14)
-                .frame(width: 290, alignment: .leading)
-                .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 18))
-                .padding(18)
-            }
-        } else {
-            ContentUnavailableView(
-                "没有找到 cod.pet 仓库",
-                systemImage: "folder.badge.questionmark",
-                description: Text("新的 hybrid app 需要在仓库目录内运行，才能直接复用现有展示页。")
-            )
-        }
-    }
-}
-
-struct InstalledTabView: View {
-    @EnvironmentObject private var store: CodpetHybridStore
-    
-    private let columns = [
-        GridItem(.adaptive(minimum: 220, maximum: 260), spacing: 16)
-    ]
-    
-    var body: some View {
-        Group {
-            if store.installedPets.isEmpty {
-                ContentUnavailableView(
-                    "还没有本地 Pet",
-                    systemImage: "pawprint",
-                    description: Text("你可以在“发现”页里直接安装，也可以导入自己本地已有的 Pet 文件夹。")
-                )
-            } else {
-                ScrollView {
-                    HStack {
-                        Text("本地 Pet")
-                            .font(.title2.weight(.semibold))
-                        Spacer()
-                        Button("导入本地 Pet") {
-                            store.importPetFromFolder()
-                        }
-                        .buttonStyle(.bordered)
-                        
-                        Button("打开 Pet 文件夹") {
-                            store.revealCodexPetsFolder()
-                        }
-                        .buttonStyle(.borderedProminent)
-                    }
-                    .padding(.horizontal, 20)
-                    .padding(.top, 18)
-                    
-                    LazyVGrid(columns: columns, spacing: 16) {
-                        ForEach(store.installedPets) { pet in
-                            InstalledPetCard(pet: pet)
-                        }
-                    }
-                    .padding(20)
-                }
-            }
-        }
-        .navigationTitle("已安装")
-    }
-}
-
-struct InstalledPetCard: View {
-    @EnvironmentObject private var store: CodpetHybridStore
-    let pet: InstalledPet
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            ZStack(alignment: .topTrailing) {
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(Color(NSColor.windowBackgroundColor))
-                    .frame(height: 160)
-                
-                if let imageURL = pet.previewImageURL, let image = NSImage(contentsOf: imageURL) {
-                    Image(nsImage: image)
-                        .resizable()
-                        .interpolation(.none)
-                        .scaledToFit()
-                        .frame(height: 120)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                } else {
-                    Image(systemName: "questionmark.square.dashed")
-                        .font(.system(size: 40))
-                        .foregroundColor(.secondary)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                }
-                
-                if store.activePetSlug == pet.slug {
-                    Text("当前使用中")
-                        .font(.caption2.weight(.bold))
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
-                        .background(Color.green.opacity(0.16))
-                        .clipShape(Capsule())
-                        .padding(10)
-                }
-            }
-            
-            VStack(alignment: .leading, spacing: 6) {
-                Text(pet.displayName)
-                    .font(.headline)
-                    .lineLimit(1)
-                
-                Text(pet.description)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                    .lineLimit(3)
-            }
-            
-            HStack(spacing: 8) {
-                if store.activePetSlug == pet.slug {
-                    Button("已应用") {}
-                        .buttonStyle(.bordered)
-                        .disabled(true)
-                        .frame(maxWidth: .infinity)
-                } else {
-                    Button("应用到 Codex") {
-                        _ = store.applyPet(slug: pet.slug)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .frame(maxWidth: .infinity)
-                }
-                
-                Button {
-                    store.uninstallPet(slug: pet.slug)
-                } label: {
-                    Image(systemName: "trash")
-                }
-                .buttonStyle(.bordered)
-                .foregroundColor(.red)
-            }
-            
-            Button("打开文件夹") {
-                NSWorkspace.shared.activateFileViewerSelecting([pet.folderURL])
-            }
-            .buttonStyle(.plain)
-            .font(.caption)
-            .foregroundColor(.secondary)
-        }
-        .padding(14)
-        .background(
-            RoundedRectangle(cornerRadius: 18)
-                .fill(store.activePetSlug == pet.slug ? Color.blue.opacity(0.08) : Color(NSColor.controlBackgroundColor))
-        )
-        .overlay(
-            RoundedRectangle(cornerRadius: 18)
-                .stroke(store.activePetSlug == pet.slug ? Color.blue.opacity(0.5) : Color.clear, lineWidth: 1)
-        )
     }
 }
 
@@ -408,11 +240,11 @@ struct CodpetWebStoreView: NSViewRepresentable {
             }
             
             /* Installed: colorful static image */
-            .tile.native-installed .sprite-static-gray {
+            .tile.native-installed:not(.playing) .sprite-static-gray {
               filter: grayscale(0%) !important;
               opacity: 1 !important;
             }
-            .tile.native-installed .sprite-static-color {
+            .tile.native-installed:not(.playing) .sprite-static-color {
               clip-path: inset(0% 0 0 0) !important;
             }
             
