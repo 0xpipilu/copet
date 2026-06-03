@@ -313,7 +313,7 @@ const msPerRow = 350;
 const totalDur = msPerRow * rows.length;
 let t0 = null;
 function tick(now) {
-if (tile._hoverSession !== currentSession || !tile._isHovered) {
+if (tile._hoverSession !== currentSession || (!tile._isHovered && !tile._isActivePlay)) {
 stopHover(tile);
 return;
 }
@@ -383,7 +383,7 @@ if (tile._hoverSession !== currentSession) return;
 tile.classList.remove("loading");
 const activeSteam = tile.querySelector(".steam-container");
 if (activeSteam) activeSteam.remove();
-if (!tile._isHovered) {
+if (!tile._isHovered && !tile._isActivePlay) {
 tile.classList.remove("playing");
 if (colorEl) {
 colorEl.style.animation = "";

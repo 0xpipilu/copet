@@ -66,7 +66,7 @@ struct HybridContentView: View {
                 }
             }
         }
-        .frame(minWidth: 980, minHeight: 680)
+        .frame(width: 1080, height: 720)
         .sheet(isPresented: $isShowingSettings) {
             NavigationStack {
                 HybridSettingsView()
@@ -230,13 +230,53 @@ struct CodpetWebStoreView: NSViewRepresentable {
               display: none !important;
             }
             main.shell {
-              padding-top: 16px !important;
+              max-width: 100% !important;
+              width: 100% !important;
+              padding: 0 !important;
+              margin: 0 !important;
+            }
+            .gallery {
+              border-left: none !important;
+              min-height: calc(100vh - 16px) !important;
             }
             .tile-dl {
               display: none !important;
             }
+            
+            /* Action Button replacing Pet Name on hover */
             .tile-name {
               display: block !important;
+            }
+            .tile:hover .tile-name {
+              display: none !important;
+            }
+            .app-action-btn {
+              display: none;
+              align-items: center;
+              justify-content: center;
+              width: 24px;
+              height: 24px;
+              border: none;
+              background: transparent;
+              color: rgba(0, 0, 0, 0.4);
+              cursor: pointer;
+              transition: color 100ms;
+              box-shadow: none !important;
+              position: static !important;
+              transform: none !important;
+            }
+            .tile:hover .app-action-btn {
+              display: inline-flex !important;
+            }
+            .app-action-btn:hover {
+              color: #000 !important;
+              background: transparent !important;
+            }
+            .app-action-btn.delete-btn {
+              color: #ff3b30 !important;
+            }
+            .app-action-btn.delete-btn:hover {
+              color: #d32f2f !important;
             }
             
             /* Installed: colorful static image */
@@ -246,66 +286,6 @@ struct CodpetWebStoreView: NSViewRepresentable {
             }
             .tile.native-installed:not(.playing) .sprite-static-color {
               clip-path: inset(0% 0 0 0) !important;
-            }
-            
-            /* Active desktop companion highlight */
-            .tile.native-active {
-              border: 2px solid #339cff !important;
-              box-shadow: 0 0 12px rgba(51, 156, 255, 0.22) !important;
-              background: rgba(51, 156, 255, 0.02) !important;
-            }
-            .tile.native-active::after {
-              content: "Using";
-              position: absolute;
-              top: 8px;
-              left: 8px;
-              background: #339cff;
-              color: #fff;
-              font-size: 9px;
-              font-weight: 700;
-              padding: 2px 6px;
-              border-radius: 99px;
-              z-index: 5;
-              text-transform: uppercase;
-              letter-spacing: 0.05em;
-            }
-            
-            /* Action Button on top-right (Delete/Download) */
-            .app-action-btn {
-              position: absolute;
-              top: 8px;
-              right: 8px;
-              width: 24px;
-              height: 24px;
-              border-radius: 50%;
-              background: #fff;
-              border: 1px solid rgba(0, 0, 0, 0.1);
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              color: rgba(0, 0, 0, 0.5);
-              opacity: 0;
-              transform: scale(0.9);
-              transition: opacity 150ms ease, transform 150ms ease, background 150ms ease;
-              z-index: 10;
-              box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-              cursor: pointer;
-            }
-            .tile:hover .app-action-btn {
-              opacity: 1;
-              transform: scale(1);
-            }
-            .app-action-btn:hover {
-              background: #f0f0f0;
-              color: #000;
-            }
-            .app-action-btn.delete-btn {
-              color: #ff3b30;
-              border-color: rgba(255, 59, 48, 0.2);
-            }
-            .app-action-btn.delete-btn:hover {
-              background: rgba(255, 59, 48, 0.08);
-              color: #ff3b30;
             }
             
             /* NEW badge styling */
@@ -429,25 +409,52 @@ struct CodpetWebStoreView: NSViewRepresentable {
               tile.classList.toggle("native-installed", isInstalled);
               tile.classList.toggle("native-active", isActive);
               
-              let actionBtn = tile.querySelector(".app-action-btn");
-              if (!actionBtn) {
-                actionBtn = document.createElement("button");
-                actionBtn.type = "button";
-                actionBtn.className = "app-action-btn";
-                tile.appendChild(actionBtn);
+              // Append (using) to display name if active, restore base name if not
+              const nameEl = tile.querySelector(".tile-name");
+              if (nameEl) {
+                if (!nameEl._baseName) {
+                  nameEl._baseName = nameEl.textContent;
+                }
+                nameEl.textContent = isActive ? nameEl._baseName + " (using)" : nameEl._baseName;
+              }
+
+              // Active companion continuous play
+              const wasActivePlay = !!tile._isActivePlay;
+              tile._isActivePlay = isActive;
+              if (isActive) {
+                if (!wasActivePlay) {
+                  startHover(tile);
+                }
+              } else {
+                if (wasActivePlay) {
+                  if (!tile._isHovered) {
+                    stopHover(tile);
+                  }
+                }
               }
               
-              actionBtn.dataset.slug = slug;
-              if (isInstalled) {
-                actionBtn.className = "app-action-btn delete-btn";
-                actionBtn.innerHTML = trashIcon;
-                actionBtn.dataset.action = "uninstall";
-                actionBtn.title = "Delete local pet";
-              } else {
-                actionBtn.className = "app-action-btn install-btn";
-                actionBtn.innerHTML = downloadIcon;
-                actionBtn.dataset.action = "install";
-                actionBtn.title = "Install locally";
+              let labelEl = tile.querySelector(".tile-label");
+              if (labelEl) {
+                let actionBtn = labelEl.querySelector(".app-action-btn");
+                if (!actionBtn) {
+                  actionBtn = document.createElement("button");
+                  actionBtn.type = "button";
+                  actionBtn.className = "app-action-btn";
+                  labelEl.appendChild(actionBtn);
+                }
+                
+                actionBtn.dataset.slug = slug;
+                if (isInstalled) {
+                  actionBtn.className = "app-action-btn delete-btn";
+                  actionBtn.innerHTML = trashIcon;
+                  actionBtn.dataset.action = "uninstall";
+                  actionBtn.title = "Delete local pet";
+                } else {
+                  actionBtn.className = "app-action-btn install-btn";
+                  actionBtn.innerHTML = downloadIcon;
+                  actionBtn.dataset.action = "install";
+                  actionBtn.title = "Install locally";
+                }
               }
             });
           };
