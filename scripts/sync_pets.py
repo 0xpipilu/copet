@@ -41,11 +41,19 @@ def sync_pets():
 
     deleted_pets = sorted(list(target_pet_names - source_pet_names))
     
-    # Actually delete the folders
+    # Move to macOS Trash instead of permanent deletion to prevent accidental data loss
+    trash_dir = Path.home() / ".Trash"
     for pet_name in deleted_pets:
         target_pet_dir = TARGET_PETS_DIR / pet_name
-        print(f"🗑️ Found deleted pet locally: {pet_name}, removing from target...")
-        shutil.rmtree(target_pet_dir, ignore_errors=True)
+        print(f"🗑️ Found deleted pet locally: {pet_name}, moving to Trash...")
+        if target_pet_dir.exists():
+            try:
+                import time
+                dest_name = f"{pet_name}_deleted_{int(time.time())}"
+                shutil.move(str(target_pet_dir), str(trash_dir / dest_name))
+            except Exception as e:
+                print(f"Warning: Failed to move to Trash ({e}), falling back to direct removal.")
+                shutil.rmtree(target_pet_dir, ignore_errors=True)
 
     synced_pets = []
     updated_pets = []
