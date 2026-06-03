@@ -11,5 +11,6 @@ struct CodpetHybridApp: App {
         }
         .windowStyle(.hiddenTitleBar)
         .windowToolbarStyle(.unifiedCompact)
+        .windowResizability(.contentSize)
     }
 }
